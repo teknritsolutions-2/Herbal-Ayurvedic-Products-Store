@@ -12,3 +12,6 @@ vanaveda-site.tar.gz
 *.log
 .env
 .env.local
+
+# Dependencies
+node_modules/

@@ -1,7 +1,340 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="Request a product-guidance conversation with VanaVeda."><title>Consultation request — VanaVeda</title><link rel="icon" href="../assets/images/favicon.svg"><script src="../assets/js/theme-init.js"></script><link rel="stylesheet" href="../assets/css/style.css"><link rel="stylesheet" href="../assets/css/dark-mode.css"><link rel="stylesheet" href="../assets/css/rtl.css"></head><body data-page="consultation"><div data-site-header></div><main id="main"><section class="page-hero page-hero--compact"><div class="container page-hero__inner"><div><p class="eyebrow">Product guidance</p><h1>Find a thoughtful starting point.</h1></div><p>Tell us about your routine and preferences. Please do not include diagnoses, prescriptions or a detailed medical history in this request.</p></div></section><div class="container consultation-grid"><aside class="consultation-note"><img src="../assets/images/doctor-desk.jpg" alt="A calm desk with notebook and botanical references"><div><h2>What this is</h2><p>A structured product-guidance request. It is not medical care, diagnosis, emergency support or a confirmed appointment.</p><p><strong>Need clinical advice?</strong><br>Speak with a licensed healthcare professional who can review your full history.</p></div></aside><form class="consult-form" data-consultation-form><span class="step-label" data-step-label>Step 1 of 5</span><div class="step-progress" aria-label="Consultation progress"><i data-step-dot="1"></i><i data-step-dot="2"></i><i data-step-dot="3"></i><i data-step-dot="4"></i><i data-step-dot="5"></i></div>
-<section class="form-step" data-step="1"><p class="eyebrow">Your details</p><h2>How may we reach you?</h2><div class="field-grid"><label class="field"><span>Full name</span><input name="name" autocomplete="name" required></label><label class="field"><span>Email</span><input name="email" type="email" autocomplete="email" required></label><label class="field"><span>Age range</span><select name="age" required><option value="">Select</option><option>18–24</option><option>25–34</option><option>35–44</option><option>45–54</option><option>55+</option></select></label><label class="field"><span>Preferred contact</span><select name="contact" required><option value="">Select</option><option>Email</option><option>Phone, once verified</option></select></label></div></section>
-<section class="form-step" data-step="2" hidden><p class="eyebrow">Your goal</p><h2>What would you like help choosing?</h2><div class="choice-grid"><label><input type="radio" name="goal" value="Tea" required> A tea ritual</label><label><input type="radio" name="goal" value="Oil"> A body or hair oil</label><label><input type="radio" name="goal" value="Skincare"> A skincare routine</label><label><input type="radio" name="goal" value="Supplement"> A supplement format</label><label><input type="radio" name="goal" value="Gift"> A thoughtful gift</label><label><input type="radio" name="goal" value="Unsure"> I am not sure yet</label></div></section>
-<section class="form-step" data-step="3" hidden><p class="eyebrow">Preferences</p><h2>What matters most?</h2><div class="choice-grid"><label><input type="checkbox" name="preference" value="Caffeine-free"> Caffeine-free</label><label><input type="checkbox" name="preference" value="Fragrance-light"> Fragrance-light</label><label><input type="checkbox" name="preference" value="Plant-based"> Plant-based capsule</label><label><input type="checkbox" name="preference" value="Simple"> Short ingredient list</label></div><label class="field" style="margin-top:18px"><span>Known ingredient sensitivities (optional)</span><textarea name="sensitivities" placeholder="List ingredient names only; do not add medical history."></textarea></label></section>
-<section class="form-step" data-step="4" hidden><p class="eyebrow">Your routine</p><h2>Where should it fit?</h2><div class="field-grid"><label class="field"><span>Preferred time</span><select required name="time"><option value="">Select</option><option>Morning</option><option>Midday</option><option>Evening</option><option>Flexible</option></select></label><label class="field"><span>How much time?</span><select required name="duration"><option value="">Select</option><option>Under 5 minutes</option><option>5–15 minutes</option><option>Longer ritual</option></select></label><label class="field full"><span>Anything else about your product preferences?</span><textarea name="note" placeholder="For example: loose leaf vs capsules, texture, aroma or budget."></textarea></label></div></section>
-<section class="form-step" data-step="5" hidden><p class="eyebrow">Review</p><h2>One last check.</h2><p>Your request will be used only to guide a product conversation. This frontend currently stores nothing and sends nothing. A secure form connection and privacy review are required before launch.</p><label class="check-row"><input type="checkbox" required> I understand this is product guidance, not medical advice or a confirmed appointment.</label><label class="check-row"><input type="checkbox" required> I have not included sensitive medical information.</label></section>
-<div class="form-actions"><button class="button button--outline" type="button" data-prev>Back</button><button class="button" type="button" data-next>Continue</button><button class="button" type="submit" data-submit-consult>Prepare request</button></div></form></div></main><div data-site-footer></div><script src="../assets/js/products.js"></script><script src="../assets/js/main.js"></script><script src="../assets/js/cart.js"></script><script src="../assets/js/consultation.js"></script><script src="../assets/js/forms.js"></script></body></html>
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Book an Ayurvedic Doctor Consultation with VanaVeda. Request 1-on-1 personalized wellness, dosha evaluation, and botanical guidance.">
+  <title>Doctor Consultation Booking — VanaVeda</title>
+  <link rel="icon" href="../assets/images/favicon.svg">
+  <script src="../assets/js/theme-init.js"></script>
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="stylesheet" href="../assets/css/dark-mode.css">
+  <link rel="stylesheet" href="../assets/css/rtl.css">
+</head>
+<body data-page="consultation">
+  <div data-site-header></div>
+  <main id="main">
+
+    <!-- 1. Hero Section -->
+    <section class="page-hero page-hero--compact">
+      <div class="container page-hero__inner">
+        <div>
+          <p class="eyebrow">Clinical Ayurvedic Guidance</p>
+          <h1>Book a doctor consultation.</h1>
+        </div>
+        <p class="lead">Connect with qualified Ayurvedic doctors (BAMS / MD Ayurveda) for individualized health assessment, constitutional dosha analysis, and tailored botanical routines.</p>
+      </div>
+    </section>
+
+    <!-- 2. Consultation Options Overview -->
+    <section class="section section--tight section--surface">
+      <div class="container">
+        <div class="section-head" data-reveal>
+          <div>
+            <p class="eyebrow">Available Formats</p>
+            <h2>Consultation options & focus areas.</h2>
+            <p>Select the session depth that corresponds to your wellness objectives.</p>
+          </div>
+        </div>
+
+        <div class="consult-options-grid" data-reveal>
+          <div class="consult-option-card">
+            <span class="badge">Foundational</span>
+            <h3>Constitutional Prakriti Review</h3>
+            <p>An introduction to your individual Vata, Pitta, and Kapha tendencies, baseline digestion (Agni), and primary herbal routine recommendations.</p>
+            <div class="duration">⏱ 30 Minutes · Online or In-Person</div>
+          </div>
+
+          <div class="consult-option-card">
+            <span class="badge" style="background:var(--brick);color:#fff;">Comprehensive</span>
+            <h3>Full Ayurvedic Health Assessment</h3>
+            <p>A deep evaluation covering seasonal routine (Ritucharya), sleep habits, hair and scalp balance, chronic tension patterns, and holistic herbal support.</p>
+            <div class="duration">⏱ 60 Minutes · Online or In-Person</div>
+          </div>
+
+          <div class="consult-option-card">
+            <span class="badge">Follow-up</span>
+            <h3>Seasonal Check-in & Review</h3>
+            <p>Reviewing progress, adjusting herbal formulations, and tailoring lifestyle practices to seasonal climate changes.</p>
+            <div class="duration">⏱ 20 Minutes · Online Telehealth</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. How Requests Work & Booking Form Grid -->
+    <div class="container consultation-grid">
+      <aside class="consultation-note" data-reveal>
+        <img src="../assets/images/doctor-desk.jpg" alt="A calm Ayurvedic physician desk with diagnostic tools and books">
+        <div>
+          <span class="eyebrow" style="color:var(--brick);">Request Protocol</span>
+          <h2>How booking works.</h2>
+          <div class="steps" style="margin:20px 0;">
+            <div>
+              <span>01</span>
+              <div>
+                <h3>Submit Preferences</h3>
+                <p>Provide your preferred dates, time window, and focus area.</p>
+              </div>
+            </div>
+            <div>
+              <span>02</span>
+              <div>
+                <h3>Clinic Verification</h3>
+                <p>Our care coordinator matches your needs with licensed doctor availability.</p>
+              </div>
+            </div>
+            <div>
+              <span>03</span>
+              <div>
+                <h3>Confirmation & Link</h3>
+                <p>You receive verified practitioner details and a secure video link.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="location-notice-box">
+            <strong>Non-Emergency Notice:</strong>
+            <p style="margin:6px 0 0;font-size:.82rem;">Consultations are structured for preventive wellness and constitutional lifestyle balancing. For urgent or acute medical emergencies, please visit an accredited medical facility immediately.</p>
+          </div>
+        </div>
+      </aside>
+
+      <!-- 4. Multi-Step Booking Form -->
+      <form class="consult-form" data-consultation-form data-reveal>
+        <span class="step-label" data-step-label>Step 1 of 5</span>
+        <div class="step-progress" aria-label="Booking step progress">
+          <i data-step-dot="1" class="is-active"></i>
+          <i data-step-dot="2"></i>
+          <i data-step-dot="3"></i>
+          <i data-step-dot="4"></i>
+          <i data-step-dot="5"></i>
+        </div>
+
+        <!-- Step 1: Mode -->
+        <section class="form-step" data-step="1">
+          <p class="eyebrow">Step 1 · Format</p>
+          <h2>Choose consultation mode.</h2>
+          <p class="lead" style="font-size:1rem;margin-bottom:20px;">Select how you wish to speak with your Ayurvedic physician.</p>
+          <div class="choice-grid">
+            <label>
+              <input type="radio" name="mode" value="Online Video Telehealth" checked required>
+              <div>
+                <strong>Online Video Telehealth</strong>
+                <p style="font-size:.82rem;margin:4px 0 0;color:var(--muted);">Secure video call accessible worldwide</p>
+              </div>
+            </label>
+            <label>
+              <input type="radio" name="mode" value="In-Person Partner Clinic">
+              <div>
+                <strong>In-Person Partner Clinic</strong>
+                <p style="font-size:.82rem;margin:4px 0 0;color:var(--muted);">Subject to partner clinic location availability</p>
+              </div>
+            </label>
+            <label>
+              <input type="radio" name="mode" value="Telephone Audio Only">
+              <div>
+                <strong>Telephone Audio Call</strong>
+                <p style="font-size:.82rem;margin:4px 0 0;color:var(--muted);">Direct voice consultation</p>
+              </div>
+            </label>
+            <label>
+              <input type="radio" name="mode" value="No Preference">
+              <div>
+                <strong>No Preference / Earliest Slot</strong>
+                <p style="font-size:.82rem;margin:4px 0 0;color:var(--muted);">First available licensed opening</p>
+              </div>
+            </label>
+          </div>
+        </section>
+
+        <!-- Step 2: Date & Time Window -->
+        <section class="form-step" data-step="2" hidden>
+          <p class="eyebrow">Step 2 · Timing</p>
+          <h2>Preferred date & window.</h2>
+          <p class="lead" style="font-size:1rem;margin-bottom:20px;">Appointments require provider verification; select your preferred target slot.</p>
+          <div class="field-grid">
+            <label class="field">
+              <span>Preferred Date</span>
+              <input type="date" name="date" required>
+            </label>
+            <label class="field">
+              <span>Time Window</span>
+              <select name="time_window" required>
+                <option value="">Select a window</option>
+                <option value="Morning (09:00 – 12:00)">Morning (09:00 – 12:00)</option>
+                <option value="Afternoon (12:00 – 16:00)">Afternoon (12:00 – 16:00)</option>
+                <option value="Evening (16:00 – 19:30)">Evening (16:00 – 19:30)</option>
+              </select>
+            </label>
+            <label class="field full">
+              <span>Your Time Zone</span>
+              <select name="timezone" required>
+                <option value="IST (UTC+5:30)">India Standard Time — IST (UTC+5:30)</option>
+                <option value="GST (UTC+4:00)">Gulf Standard Time — GST (UTC+4:00)</option>
+                <option value="GMT/BST (UTC+0/1)">British Time — GMT/BST</option>
+                <option value="EST (UTC-5:00)">Eastern Time — EST (UTC-5:00)</option>
+                <option value="PST (UTC-8:00)">Pacific Time — PST (UTC-8:00)</option>
+                <option value="Other">Other Global Time Zone</option>
+              </select>
+            </label>
+          </div>
+        </section>
+
+        <!-- Step 3: Contact Information -->
+        <section class="form-step" data-step="3" hidden>
+          <p class="eyebrow">Step 3 · Patient Details</p>
+          <h2>How may we contact you?</h2>
+          <div class="field-grid">
+            <label class="field">
+              <span>Full Name</span>
+              <input type="text" name="name" autocomplete="name" required placeholder="e.g. Priya Sharma">
+            </label>
+            <label class="field">
+              <span>Email Address</span>
+              <input type="email" name="email" autocomplete="email" required placeholder="priya@example.com">
+            </label>
+            <label class="field">
+              <span>Phone Number</span>
+              <input type="tel" name="phone" autocomplete="tel" required placeholder="+91 98765 43210">
+            </label>
+            <label class="field">
+              <span>Age Range</span>
+              <select name="age" required>
+                <option value="">Select</option>
+                <option>18–25</option>
+                <option>26–35</option>
+                <option>36–50</option>
+                <option>51–65</option>
+                <option>65+</option>
+              </select>
+            </label>
+          </div>
+        </section>
+
+        <!-- Step 4: Reason for Consultation -->
+        <section class="form-step" data-step="4" hidden>
+          <p class="eyebrow">Step 4 · Purpose</p>
+          <h2>Primary wellness focus.</h2>
+          <div class="field-grid">
+            <label class="field full">
+              <span>Focus Area</span>
+              <select name="reason_category" required>
+                <option value="">Select primary focus</option>
+                <option value="Constitutional Assessment & Dosha Balance">Constitutional Assessment & Dosha Balance</option>
+                <option value="Hair & Scalp Vitality Regimen">Hair & Scalp Vitality Regimen</option>
+                <option value="Digestive Fire & Nourishment (Agni)">Digestive Fire & Nourishment (Agni)</option>
+                <option value="Sleep, Stress & Restorative Care">Sleep, Stress & Restorative Care</option>
+                <option value="Seasonal Routine & Detoxification (Ritucharya)">Seasonal Routine & Detoxification (Ritucharya)</option>
+                <option value="Skin Health & Botanical Care">Skin Health & Botanical Care</option>
+              </select>
+            </label>
+            <label class="field full">
+              <span>Brief Non-Diagnostic Description</span>
+              <textarea name="reason_notes" required placeholder="Describe your general lifestyle goals and what you hope to address (e.g., establishing a daily hair care routine, improving post-meal energy). Please do NOT enter sensitive medical histories or diagnostic records."></textarea>
+            </label>
+          </div>
+        </section>
+
+        <!-- Step 5: Review & Submit -->
+        <section class="form-step" data-step="5" hidden>
+          <p class="eyebrow">Step 5 · Verification</p>
+          <h2>Review your booking request.</h2>
+          <div data-review-summary></div>
+          <div style="margin-top:20px;">
+            <label class="check-row">
+              <input type="checkbox" required>
+              <span>I understand this submission is a <strong>booking request</strong> and that appointments require clinic and physician confirmation.</span>
+            </label>
+            <label class="check-row">
+              <input type="checkbox" required>
+              <span>I confirm that this consultation is for lifestyle and herbal wellness guidance and not for acute medical emergencies.</span>
+            </label>
+          </div>
+        </section>
+
+        <div class="form-actions">
+          <button class="button button--outline" type="button" data-prev hidden>Back</button>
+          <button class="button" type="button" data-next>Continue</button>
+          <button class="button" type="submit" data-submit-consult hidden>Submit Booking Request</button>
+        </div>
+      </form>
+    </div>
+
+    <!-- 5. Practitioner Information & Clinical Ethics -->
+    <section class="section section--surface">
+      <div class="container">
+        <div class="section-head" data-reveal>
+          <div>
+            <p class="eyebrow">Practitioner Standards</p>
+            <h2>Verified Ayurvedic credentials.</h2>
+            <p>Our commitment to authentic clinical governance and transparent qualifications.</p>
+          </div>
+        </div>
+
+        <div class="evidence-grid" data-reveal>
+          <div class="evidence-card">
+            <span class="number">01</span>
+            <h3>Recognized Qualifications</h3>
+            <p>All consulting physicians hold accredited degrees (BAMS / MD Ayurveda) recognized by state councils and the Ministry of AYUSH, India.</p>
+          </div>
+          <div class="evidence-card">
+            <span class="number">02</span>
+            <h3>Constitutional Ethics</h3>
+            <p>Practitioners recommend grounded lifestyle shifts, dietary adjustments, and verified botanical preparations. No aggressive marketing or miracle claims.</p>
+          </div>
+          <div class="evidence-card">
+            <span class="number">03</span>
+            <h3>Confidential Records</h3>
+            <p>Patient correspondence is held under strict professional privacy guidelines. Rosters are published only upon individual clinical audit verification.</p>
+          </div>
+        </div>
+
+        <div class="practitioner-notice" data-reveal>
+          <h3>Physician Roster Notice</h3>
+          <p>In accordance with VanaVeda's strict verification policy, individual doctor bios and registration numbers are confirmed prior to each scheduled appointment. We do not display fictitious practitioner stock portraits or placeholder clinical claims.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6. Consultation FAQ -->
+    <section class="section section--wash">
+      <div class="container">
+        <div class="section-head" data-reveal>
+          <div>
+            <p class="eyebrow">Common Inquiries</p>
+            <h2>Consultation booking FAQ.</h2>
+          </div>
+        </div>
+
+        <div class="faq-list" data-reveal>
+          <details>
+            <summary>What occurs after I submit a consultation booking request?</summary>
+            <p>Our clinical coordination team checks your requested date and time against our certified doctor roster. You will receive an email or telephone verification within 24 business hours containing your confirmed physician details and appointment access link.</p>
+          </details>
+          <details>
+            <summary>Is payment collected during this booking request?</summary>
+            <p>No. Payment is never requested through unverified frontend forms. Once your consultation slot and physician are verified, a secure payment authorization link is provided directly by the partner clinical center.</p>
+          </details>
+          <details>
+            <summary>How should I prepare for my Ayurvedic consultation?</summary>
+            <p>Have a brief overview of your daily waking, eating, and sleeping hours, as well as a list of any current herbal products or prescribed medications. Avoid heavy meals immediately prior to your session.</p>
+          </details>
+          <details>
+            <summary>Can I reschedule or cancel my requested window?</summary>
+            <p>Yes. Once our coordinator reaches out, you may request alternate days or timing without penalty. We recommend providing at least 24 hours notice for any rescheduling.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+  </main>
+  <div data-site-footer></div>
+
+  <script src="../assets/js/products.js"></script>
+  <script src="../assets/js/main.js"></script>
+  <script src="../assets/js/cart.js"></script>
+  <script src="../assets/js/consultation.js"></script>
+  <script src="../assets/js/forms.js"></script>
+</body>
+</html>

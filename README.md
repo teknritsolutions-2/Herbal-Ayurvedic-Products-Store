@@ -8,16 +8,18 @@
 
 ---
 
-## ✨ Features
+## ✨ Key Storefront Features
 
-- **Rich Product Catalog**: 22 curated botanical products categorized into Herbal Teas, Ayurvedic Oils, Supplements, Natural Skincare, and Wellness Essentials.
-- **Dynamic Search & Filtering**: Instant client-side search across product names, categories, and ingredients.
-- **Product Details**: Comprehensive views including ingredients breakdown, ritual instructions, usage guidance, and certifications.
+- **Rebuilt Shared Navigation**: Semantic order `Home | About | Products | Ingredients | Doctor Consultation | Certifications | Contact`. Home is an accessible desktop and mobile dropdown containing strictly `Home 1` and `Home 2`.
+- **5 Mandatory Client Categories**: Complete 27-product catalog organized into **Herbal Teas**, **Oils**, **Supplements**, **Skincare**, and dedicated **Hair Care** (featuring Bhringraj Hair Oil, Amla Hair Oil, Herbal Cleanser, Scalp Care Oil, and Botanical Mask).
+- **Home 1 (The Herbal Sanctuary)**: 9 substantial store-focused sections including Shop by Category, Featured Hair Care collection, Interactive Botanical Discovery (Tulsi, Turmeric, Amla, Ashwagandha, Neem, Bhringraj), Quality Transparency preview, and Doctor Consultation booking CTA.
+- **Home 2 (Rituals & Remedies)**: 8 distinct editorial shopping sections including Herbal Oils showcase, Hair & Skin rituals grid, scroll-revealed botanical journey, and certifications feature.
+- **Doctor Consultation Booking**: 5-step accessible appointment-request workflow (Consultation Mode, Preferred Date & Window with past-date prevention, Contact Details, Purpose, and Review Summary with honest unconfirmed status disclaimer).
+- **Quality & Certifications Transparency**: Verification and document register page educating customers on testing standards, batch records, and genuine certificates without fabricated claims.
+- **Contact & Wholesale Trade**: Dedicated toggle between general customer enquiries and a full Wholesale Application (business type, volume, delivery location), paired with a configurable Store Location module and FAQ.
+- **Searchable Ingredient Glossary**: Interactive directory linking botanical entries directly to live catalog products, along with formulation guides and FAQ.
 - **Cart & Bag Experience**: Interactive slide-out cart drawer with local storage persistence and quick quantity adjustments.
-- **Dark Mode & RTL Support**: Seamless switching between light/dark themes and LTR/RTL reading layouts.
-- **5-Step Consultation Workflow**: Guided interactive consultation request form for personalized wellness recommendations.
-- **Searchable Ingredient Glossary**: Deep-dive into Ayurvedic herbs, roots, and botanicals with educational contexts.
-- **Fully Responsive & Accessible**: Optimized for mobile, tablet, and desktop viewing with semantic HTML and keyboard navigation.
+- **Comprehensive Responsive & RTL Quality**: Tested across 11 breakpoints (320px to 1920px), Light/Dark themes, and full LTR/RTL reading layouts.
 
 ---
 
@@ -55,6 +57,17 @@ Then visit: [http://localhost:4173](http://localhost:4173)
 ### Using Node.js (npx serve):
 ```sh
 npx serve dist
+```
+
+---
+
+## 🧪 Automated QA & Visual Regression Testing
+
+The test suite validates responsive rendering across 11 standard viewport breakpoints (320px, 360px, 390px, 430px, 640px, 768px, 820px, 1024px, 1280px, 1440px, 1920px), Home dropdown lifecycle, 5-category filtering, Doctor Consultation multi-step booking, Wholesale form mode switching, Dark Mode contrast, and RTL layout:
+
+```sh
+# Run browser QA and screenshot generation
+npm test
 ```
 
 ---

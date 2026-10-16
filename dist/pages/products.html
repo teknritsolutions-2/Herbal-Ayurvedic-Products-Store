@@ -1,1 +1,138 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="Browse all VanaVeda herbal teas, oils, supplements, natural skincare and wellness essentials."><title>Shop all products — VanaVeda</title><link rel="icon" href="../assets/images/favicon.svg"><script src="../assets/js/theme-init.js"></script><link rel="stylesheet" href="../assets/css/style.css"><link rel="stylesheet" href="../assets/css/dark-mode.css"><link rel="stylesheet" href="../assets/css/rtl.css"></head><body data-page="products"><div data-site-header></div><main id="main"><section class="page-hero page-hero--compact"><div class="container page-hero__inner"><div><p class="eyebrow">The complete shelf</p><h1>Shop all products.</h1></div><p>Filter 22 teas, oils, supplements, skincare products and everyday ritual tools. Product copy describes format and use—not promised outcomes.</p></div></section><div class="container shop-shell"><aside class="filter-panel" data-filter-panel><div class="filter-head"><strong>Filter by category</strong><button class="icon-button filter-close" data-filter-close aria-label="Close filters">×</button></div><div class="filter-group"><h2>Collections</h2><label class="check-row"><input data-category-filter type="checkbox" value="Herbal Teas"> Herbal Teas</label><label class="check-row"><input data-category-filter type="checkbox" value="Ayurvedic Oils"> Ayurvedic Oils</label><label class="check-row"><input data-category-filter type="checkbox" value="Supplements"> Supplements</label><label class="check-row"><input data-category-filter type="checkbox" value="Natural Skincare"> Natural Skincare</label><label class="check-row"><input data-category-filter type="checkbox" value="Wellness Essentials"> Wellness Essentials</label></div><button class="text-button" data-clear-filters>Clear all filters</button></aside><section aria-label="Product results"><div class="shop-toolbar"><label class="search-control"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="m20 20-4-4"></path></svg><span class="sr-only">Search products</span><input data-shop-search type="search" placeholder="Search products or ingredients"></label><button class="button button--outline button--small filter-open" data-filter-open>Filters</button><span class="result-count" data-result-count>22 products</span><label><span class="sr-only">Sort products</span><select data-shop-sort><option value="featured">Featured</option><option value="price-low">Price: low to high</option><option value="price-high">Price: high to low</option><option value="name">Name: A–Z</option></select></label></div><div class="product-grid" data-product-grid></div></section></div></main><div data-site-footer></div><script src="../assets/js/products.js"></script><script src="../assets/js/main.js"></script><script src="../assets/js/cart.js"></script><script src="../assets/js/shop.js"></script><script src="../assets/js/forms.js"></script></body></html>
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Browse all VanaVeda herbal teas, therapeutic oils, supplements, clean skincare, and dedicated hair care formulated for daily ritual.">
+  <title>Shop All Products — VanaVeda Apothecary</title>
+  <link rel="icon" href="../assets/images/favicon.svg">
+  <script src="../assets/js/theme-init.js"></script>
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="stylesheet" href="../assets/css/dark-mode.css">
+  <link rel="stylesheet" href="../assets/css/rtl.css">
+</head>
+<body data-page="products">
+  <div data-site-header></div>
+  <main id="main">
+
+    <!-- Compact Product-First Hero -->
+    <section class="page-hero page-hero--compact">
+      <div class="container page-hero__inner">
+        <div>
+          <p class="eyebrow">The Complete Apothecary Shelf</p>
+          <h1>Shop all products.</h1>
+        </div>
+        <p>Explore considered herbal teas, Ayurvedic oils, targeted supplements, clean skincare, and our dedicated hair care line. Transparent ingredients and grounded directions.</p>
+      </div>
+    </section>
+
+    <div class="container">
+      <!-- Browse by Botanical Strip -->
+      <div class="ingredient-filter-strip">
+        <span>Browse by Botanical:</span>
+        <button class="ingredient-filter-pill" data-botanical-tag="Tulsi">Tulsi</button>
+        <button class="ingredient-filter-pill" data-botanical-tag="Amla">Amla</button>
+        <button class="ingredient-filter-pill" data-botanical-tag="Bhringraj">Bhringraj</button>
+        <button class="ingredient-filter-pill" data-botanical-tag="Neem">Neem</button>
+        <button class="ingredient-filter-pill" data-botanical-tag="Turmeric">Turmeric</button>
+        <button class="ingredient-filter-pill" data-botanical-tag="Ashwagandha">Ashwagandha</button>
+        <button class="ingredient-filter-pill" data-botanical-tag="Rose">Rose</button>
+        <a class="text-link" href="ingredients.html" style="margin-left:auto;font-size:.82rem;">Glossary →</a>
+      </div>
+    </div>
+
+    <!-- Main Shop Shell (Filters + Catalog) -->
+    <div class="container shop-shell">
+      <aside class="filter-panel" data-filter-panel>
+        <div class="filter-head">
+          <strong>Filter by category</strong>
+          <button class="icon-button filter-close" data-filter-close aria-label="Close filters">×</button>
+        </div>
+        <div class="filter-group">
+          <h2>Collections</h2>
+          <label class="check-row">
+            <input data-category-filter type="checkbox" value="Herbal Teas"> Herbal Teas
+          </label>
+          <label class="check-row">
+            <input data-category-filter type="checkbox" value="Oils"> Ayurvedic Oils
+          </label>
+          <label class="check-row">
+            <input data-category-filter type="checkbox" value="Supplements"> Supplements
+          </label>
+          <label class="check-row">
+            <input data-category-filter type="checkbox" value="Skincare"> Skincare
+          </label>
+          <label class="check-row">
+            <input data-category-filter type="checkbox" value="Hair Care"> Hair Care
+          </label>
+          <label class="check-row">
+            <input data-category-filter type="checkbox" value="Wellness Essentials"> Wellness Essentials
+          </label>
+        </div>
+        <button class="text-button" data-clear-filters style="margin-top:16px;">Clear all filters</button>
+      </aside>
+
+      <section aria-label="Product results">
+        <div class="shop-toolbar">
+          <label class="search-control">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="m20 20-4-4"></path></svg>
+            <span class="sr-only">Search products</span>
+            <input data-shop-search type="search" placeholder="Search products, botanicals, or formats">
+          </label>
+          <button class="button button--outline button--small filter-open" data-filter-open>Filters</button>
+          <span class="result-count" data-result-count>Loading products...</span>
+          <label>
+            <span class="sr-only">Sort products</span>
+            <select data-shop-sort>
+              <option value="featured">Featured</option>
+              <option value="price-low">Price: low to high</option>
+              <option value="price-high">Price: high to low</option>
+              <option value="name">Name: A–Z</option>
+            </select>
+          </label>
+        </div>
+
+        <div class="product-grid" data-product-grid></div>
+      </section>
+    </div>
+
+    <!-- Seasonal Showcase Band (Appears below main catalog) -->
+    <section class="section section--wash">
+      <div class="container">
+        <div class="section-head" data-reveal>
+          <div>
+            <p class="eyebrow">Seasonal Focus</p>
+            <h2>Ayurvedic Scalp & Crown Ritual.</h2>
+            <p>Traditional multi-herb infusions designed to maintain root nourishment through seasonal transitions.</p>
+          </div>
+          <a class="button button--outline button--small" href="products.html?category=Hair%20Care">Shop all hair care</a>
+        </div>
+        <div class="product-grid" data-featured-products="bhringraj-hair-oil,amla-hair-oil,herbal-hair-cleanser,scalp-care-oil"></div>
+      </div>
+    </section>
+
+  </main>
+  <div data-site-footer></div>
+
+  <script src="../assets/js/products.js"></script>
+  <script src="../assets/js/main.js"></script>
+  <script src="../assets/js/cart.js"></script>
+  <script src="../assets/js/shop.js"></script>
+  <script src="../assets/js/forms.js"></script>
+  <script>
+    // Quick botanical tag clicks
+    document.addEventListener('DOMContentLoaded', () => {
+      document.querySelectorAll('[data-botanical-tag]').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const searchInput = document.querySelector('[data-shop-search]');
+          if (searchInput) {
+            searchInput.value = btn.dataset.botanicalTag;
+            searchInput.dispatchEvent(new Event('input', { bubbles: true }));
+            searchInput.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          }
+        });
+      });
+    });
+  </script>
+</body>
+</html>
