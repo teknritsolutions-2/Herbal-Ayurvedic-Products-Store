@@ -1,0 +1,14 @@
+# OS files
+.DS_Store
+Thumbs.db
+*.swp
+
+# Compressed archives
+vanaveda-site.tar.gz
+*.tar.gz
+*.zip
+
+# Logs and environment
+*.log
+.env
+.env.local
