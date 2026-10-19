@@ -17,15 +17,19 @@
     return prodNorm.toLowerCase() === selNorm.toLowerCase();
   }
 
+  const isRoot = () => document.body.dataset.root === 'true' || !window.location.pathname.includes('/pages/');
+  const pPath = name => isRoot() ? `pages/${name}` : name;
+  const assetRoot = () => isRoot() ? 'assets/' : '../assets/';
+
   const productCard = p => `
     <article class="product-card" data-reveal>
-      <a class="product-card__image" href="product-details.html?id=${p.id}">
-        <img src="../assets/images/${p.image}" alt="${p.name}" loading="lazy">
+      <a class="product-card__image" href="${pPath('product-details.html')}?id=${p.id}">
+        <img src="${assetRoot()}images/${p.image}" alt="${p.name}" loading="lazy">
         ${p.badge ? `<span class="badge">${p.badge}</span>` : ''}
       </a>
       <div class="product-card__body">
         <p class="product-card__category">${p.category}</p>
-        <h3><a href="product-details.html?id=${p.id}">${p.name}</a></h3>
+        <h3><a href="${pPath('product-details.html')}?id=${p.id}">${p.name}</a></h3>
         <div class="product-card__bottom">
           <strong>${money(p.price)}</strong>
           <button class="quick-add" data-add-to-cart="${p.id}" aria-label="Quick add ${p.name}">Add</button>

@@ -17,11 +17,17 @@
     { label: 'Contact', href: 'contact.html', page: 'contact' }
   ];
 
+  const isRoot = () => document.body.dataset.root === 'true' || !window.location.pathname.includes('/pages/');
+
   function shell() {
     const page = document.body.dataset.page || '';
     const isHome = page === 'home' || page === 'home1' || page === 'home2';
     const isHome1 = page === 'home' || page === 'home1' || !page;
     const isHome2 = page === 'home2';
+    const root = isRoot();
+    const pPath = name => root ? `pages/${name}` : name;
+    const homeHref = root ? 'index.html' : '../index.html';
+    const assetRoot = root ? 'assets/' : '../assets/';
 
     const header = document.querySelector('[data-site-header]');
     if (header) {
@@ -29,9 +35,9 @@
         <a class="skip-link" href="#main">Skip to content</a>
         <div class="announcement">Thoughtful botanical goods · Earthy wellness & conscious Ayurvedic rituals</div>
         <header class="site-header">
-          <a class="brand" href="index.html" aria-label="VanaVeda home">
-            <img class="brand-light" src="../assets/brand/logo-dark.svg" alt="VanaVeda">
-            <img class="brand-dark" src="../assets/brand/logo-light.svg" alt="VanaVeda">
+          <a class="brand" href="${homeHref}" aria-label="VanaVeda home">
+            <img class="brand-light" src="${assetRoot}brand/logo-dark.svg" alt="VanaVeda">
+            <img class="brand-dark" src="${assetRoot}brand/logo-light.svg" alt="VanaVeda">
           </a>
           <nav class="desktop-nav" aria-label="Primary">
             <div class="nav-dropdown" data-nav-dropdown>
@@ -40,11 +46,11 @@
                 ${icon('chevron')}
               </button>
               <div class="nav-dropdown-menu" id="home-dropdown-menu" data-nav-dropdown-menu role="menu">
-                <a href="index.html" role="menuitem"${isHome1 ? ' aria-current="page"' : ''}>Home 1</a>
-                <a href="home2.html" role="menuitem"${isHome2 ? ' aria-current="page"' : ''}>Home 2</a>
+                <a href="${homeHref}" role="menuitem"${isHome1 ? ' aria-current="page"' : ''}>Home 1</a>
+                <a href="${pPath('home2.html')}" role="menuitem"${isHome2 ? ' aria-current="page"' : ''}>Home 2</a>
               </div>
             </div>
-            ${mainNav.map(item => `<a href="${item.href}"${page === item.page ? ' aria-current="page"' : ''}>${item.label}</a>`).join('')}
+            ${mainNav.map(item => `<a href="${pPath(item.href)}"${page === item.page ? ' aria-current="page"' : ''}>${item.label}</a>`).join('')}
           </nav>
           <div class="header-tools">
             <button class="icon-button" data-open-search aria-label="Search">${icon('search')}</button>
@@ -67,17 +73,17 @@
             <div class="mobile-nav-group">
               <span class="mobile-nav-heading">Home</span>
               <div class="mobile-nav-sub">
-                <a href="index.html"${isHome1 ? ' aria-current="page"' : ''}>Home 1</a>
-                <a href="home2.html"${isHome2 ? ' aria-current="page"' : ''}>Home 2</a>
+                <a href="${homeHref}"${isHome1 ? ' aria-current="page"' : ''}>Home 1</a>
+                <a href="${pPath('home2.html')}"${isHome2 ? ' aria-current="page"' : ''}>Home 2</a>
               </div>
             </div>
-            <a href="about.html"${page === 'about' ? ' aria-current="page"' : ''}>About</a>
-            <a href="products.html"${page === 'products' ? ' aria-current="page"' : ''}>Products</a>
-            <a href="ingredients.html"${page === 'ingredients' ? ' aria-current="page"' : ''}>Ingredients</a>
-            <a href="consultation.html"${page === 'consultation' ? ' aria-current="page"' : ''}>Doctor Consultation</a>
-            <a href="certifications.html"${page === 'certifications' ? ' aria-current="page"' : ''}>Certifications</a>
-            <a href="contact.html"${page === 'contact' ? ' aria-current="page"' : ''}>Contact</a>
-            <a href="cart.html"${page === 'cart' ? ' aria-current="page"' : ''}>Bag (<span data-cart-count-mobile>0</span>)</a>
+            <a href="${pPath('about.html')}"${page === 'about' ? ' aria-current="page"' : ''}>About</a>
+            <a href="${pPath('products.html')}"${page === 'products' ? ' aria-current="page"' : ''}>Products</a>
+            <a href="${pPath('ingredients.html')}"${page === 'ingredients' ? ' aria-current="page"' : ''}>Ingredients</a>
+            <a href="${pPath('consultation.html')}"${page === 'consultation' ? ' aria-current="page"' : ''}>Doctor Consultation</a>
+            <a href="${pPath('certifications.html')}"${page === 'certifications' ? ' aria-current="page"' : ''}>Certifications</a>
+            <a href="${pPath('contact.html')}"${page === 'contact' ? ' aria-current="page"' : ''}>Contact</a>
+            <a href="${pPath('cart.html')}"${page === 'cart' ? ' aria-current="page"' : ''}>Bag (<span data-cart-count-mobile>0</span>)</a>
           </nav>
         </div>`;
       header.insertAdjacentHTML('beforebegin', headerMarkup);
@@ -90,38 +96,38 @@
         <footer class="footer">
           <div class="footer__main">
             <div>
-              <a class="footer-brand" href="index.html" aria-label="VanaVeda home">
-                <img class="brand-light" src="../assets/brand/logo-light.svg" alt="VanaVeda">
-                <img class="brand-dark" src="../assets/brand/logo-dark.svg" alt="VanaVeda">
+              <a class="footer-brand" href="${homeHref}" aria-label="VanaVeda home">
+                <img class="brand-light" src="${assetRoot}brand/logo-light.svg" alt="VanaVeda">
+                <img class="brand-dark" src="${assetRoot}brand/logo-dark.svg" alt="VanaVeda">
               </a>
               <p>Botanical goods for considered daily rituals. Clear ingredients, practical directions, no miracle language.</p>
             </div>
             <div>
               <h2>Shop</h2>
-              <a href="products.html">All Products</a>
-              <a href="products.html?category=Herbal%20Teas">Herbal Teas</a>
-              <a href="products.html?category=Oils">Oils</a>
-              <a href="products.html?category=Supplements">Supplements</a>
-              <a href="products.html?category=Skincare">Skincare</a>
-              <a href="products.html?category=Hair%20Care">Hair Care</a>
+              <a href="${pPath('products.html')}">All Products</a>
+              <a href="${pPath('products.html')}?category=Herbal%20Teas">Herbal Teas</a>
+              <a href="${pPath('products.html')}?category=Oils">Oils</a>
+              <a href="${pPath('products.html')}?category=Supplements">Supplements</a>
+              <a href="${pPath('products.html')}?category=Skincare">Skincare</a>
+              <a href="${pPath('products.html')}?category=Hair%20Care">Hair Care</a>
             </div>
             <div>
               <h2>Explore</h2>
-              <a href="index.html">Home 1</a>
-              <a href="home2.html">Home 2</a>
-              <a href="about.html">About</a>
-              <a href="ingredients.html">Ingredients Glossary</a>
-              <a href="consultation.html">Doctor Consultation</a>
-              <a href="certifications.html">Certifications</a>
+              <a href="${homeHref}">Home 1</a>
+              <a href="${pPath('home2.html')}">Home 2</a>
+              <a href="${pPath('about.html')}">About</a>
+              <a href="${pPath('ingredients.html')}">Ingredients Glossary</a>
+              <a href="${pPath('consultation.html')}">Doctor Consultation</a>
+              <a href="${pPath('certifications.html')}">Certifications</a>
             </div>
             <div>
               <h2>Support</h2>
-              <a href="contact.html">Contact</a>
-              <a href="contact.html#wholesale">Wholesale Enquiry</a>
-              <a href="faq.html">FAQ</a>
-              <a href="shipping-returns.html">Shipping & Returns</a>
-              <a href="privacy.html">Privacy</a>
-              <a href="terms.html">Terms</a>
+              <a href="${pPath('contact.html')}">Contact</a>
+              <a href="${pPath('contact.html')}#wholesale">Wholesale Enquiry</a>
+              <a href="${pPath('faq.html')}">FAQ</a>
+              <a href="${pPath('shipping-returns.html')}">Shipping & Returns</a>
+              <a href="${pPath('privacy.html')}">Privacy</a>
+              <a href="${pPath('terms.html')}">Terms</a>
               <div class="footer-newsletter">
                 <p class="footer-newsletter__title">Stay close</p>
                 <form data-local-form class="newsletter">
@@ -158,7 +164,7 @@
             <span>Subtotal</span>
             <strong data-mini-subtotal></strong>
           </div>
-          <a class="button button--full" href="cart.html">View bag</a>
+          <a class="button button--full" href="${pPath('cart.html')}">View bag</a>
         </div>
       </aside>
       <div class="search-overlay" data-search-overlay>
@@ -377,10 +383,14 @@
 
     const el = document.querySelector('[data-search-results]');
     if (!el) return;
+    const root = isRoot();
+    const pPath = name => root ? `pages/${name}` : name;
+    const assetRoot = root ? 'assets/' : '../assets/';
+
     el.innerHTML = rows.length
       ? rows.map(p => `
-          <a href="product-details.html?id=${p.id}">
-            <img src="../assets/images/${p.image}" alt="">
+          <a href="${pPath('product-details.html')}?id=${p.id}">
+            <img src="${assetRoot}images/${p.image}" alt="">
             <span>
               <small>${p.category}</small>
               <strong>${p.name}</strong>

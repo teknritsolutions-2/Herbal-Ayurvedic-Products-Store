@@ -10,7 +10,7 @@ Serve `dist/` over HTTP. From the repository root:
 python3 -m http.server 4173 --directory dist
 ```
 
-Open `http://localhost:4173/pages/index.html`.
+Open `http://localhost:4173/index.html`.
 
 ## Important launch boundaries
 

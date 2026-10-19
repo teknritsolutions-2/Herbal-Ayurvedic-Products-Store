@@ -28,15 +28,15 @@
 ```text
 ├── dist/                     # Client template package
 │   ├── assets/
+│   │   ├── brand/            # Vector logos
 │   │   ├── css/              # style.css, dark-mode.css, rtl.css
-│   │   ├── js/               # main.js, shop.js, forms.js, plugins/
-│   │   ├── images/           # Curated herbal and botanical imagery
 │   │   ├── fonts/            # Local web fonts
-│   │   └── brand/            # Vector logos
-│   ├── pages/                # Storefront pages (index.html, about.html, contact.html, etc.)
+│   │   ├── images/           # Curated herbal and botanical imagery
+│   │   └── js/               # main.js, shop.js, forms.js, plugins/
 │   ├── documentation/        # Customization guides and image credits
+│   ├── pages/                # Storefront subpages (about.html, contact.html, products.html, etc.)
+│   ├── index.html            # Primary storefront home page
 │   └── README.md             # Template guide
-├── .gitignore                # Git ignore rules
 └── README.md                 # Project documentation
 ```
 
@@ -50,7 +50,7 @@ Serve the `dist/` directory using any local static file server:
 ```sh
 python3 -m http.server 4173 --directory dist
 ```
-Then visit: [http://localhost:4173/pages/index.html](http://localhost:4173/pages/index.html)
+Then visit: [http://localhost:4173/index.html](http://localhost:4173/index.html)
 
 ### Using Node.js (npx serve):
 ```sh

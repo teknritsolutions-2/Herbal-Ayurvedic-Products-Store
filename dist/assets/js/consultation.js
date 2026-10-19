@@ -126,7 +126,7 @@
           </p>
           <div class="complete-actions">
             <a class="button" href="products.html">Browse the Apothecary</a>
-            <a class="button button--outline" href="index.html">Return to Home</a>
+            <a class="button button--outline" href="../index.html">Return to Home</a>
           </div>
         </div>`;
       document.dispatchEvent(new CustomEvent('vanaveda:rerender'));
