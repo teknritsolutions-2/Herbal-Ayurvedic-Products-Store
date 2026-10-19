@@ -57,7 +57,11 @@
         <div class="mobile-panel" id="mobile-panel" data-mobile-panel inert>
           <div class="mobile-panel__top">
             <span>Menu</span>
-            <button class="icon-button" data-menu-close aria-label="Close menu">${icon('close')}</button>
+            <div class="mobile-panel__toggles">
+              <button class="icon-button" data-theme-toggle aria-label="Toggle color theme">${icon('sun')}</button>
+              <button class="direction-button" data-dir-toggle aria-label="Toggle text direction">RTL</button>
+              <button class="icon-button" data-menu-close aria-label="Close menu">${icon('close')}</button>
+            </div>
           </div>
           <nav aria-label="Mobile">
             <div class="mobile-nav-group">
@@ -75,10 +79,6 @@
             <a href="contact.html"${page === 'contact' ? ' aria-current="page"' : ''}>Contact</a>
             <a href="cart.html"${page === 'cart' ? ' aria-current="page"' : ''}>Bag (<span data-cart-count-mobile>0</span>)</a>
           </nav>
-          <div class="mobile-panel__tools">
-            <button class="button button--outline button--small button--full" data-theme-toggle>Toggle Theme (Light/Dark)</button>
-            <button class="button button--outline button--small button--full" data-dir-toggle>Direction: <span data-dir-label>RTL</span></button>
-          </div>
         </div>`;
       header.insertAdjacentHTML('beforebegin', headerMarkup);
       header.remove();
