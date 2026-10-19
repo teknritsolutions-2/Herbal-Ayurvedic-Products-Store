@@ -187,7 +187,12 @@
       }
     });
 
-    const related = products.filter(x => normalizeCategory(x.category) === normalizeCategory(p.category) && x.id !== p.id).slice(0, 4);
+    let related = products.filter(x => normalizeCategory(x.category) === normalizeCategory(p.category) && x.id !== p.id);
+    if (related.length < 4) {
+      const fillers = products.filter(x => x.id !== p.id && !related.some(r => r.id === x.id));
+      related = related.concat(fillers.slice(0, 4 - related.length));
+    }
+    related = related.slice(0, 4);
     const relatedEl = document.querySelector('[data-related-products]');
     if (relatedEl) relatedEl.innerHTML = related.map(productCard).join('');
   }
