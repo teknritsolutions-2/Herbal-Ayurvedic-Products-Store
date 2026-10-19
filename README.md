@@ -29,16 +29,14 @@
 ├── .github/
 │   └── workflows/
 │       └── deploy.yml        # GitHub Actions workflow for automated Pages deployment
-├── dist/                     # Production-ready static storefront files
-│   ├── index.html            # Entrypoint (redirects cleanly to pages/index.html)
-│   ├── 404.html              # Custom 404 error handler
-│   ├── sitemap.xml           # SEO sitemap
-│   ├── robots.txt            # Search engine crawler configuration
-│   ├── pages/                # Storefront pages (index, products, cart, etc.)
-│   ├── assets/               # Stylesheets, JavaScript modules, fonts, brand logos, images
+├── dist/                     # Client template package
+│   ├── assets/               # Stylesheets (style.css, dark-mode.css, rtl.css), JS, fonts, images
 │   ├── documentation/        # Customization guides and image credits
-│   └── tests/                # Automated browser QA scripts and screenshots
+│   ├── pages/                # Storefront pages (index.html, about.html, contact.html, etc.)
+│   └── README.md             # Template guide
+├── tests/                    # Automated browser QA scripts and screenshots
 ├── .gitignore                # Git ignore rules
+├── package.json              # Project scripts and test dependencies
 └── README.md                 # Project documentation
 ```
 
@@ -52,7 +50,7 @@ Serve the `dist/` directory using any local static file server:
 ```sh
 python3 -m http.server 4173 --directory dist
 ```
-Then visit: [http://localhost:4173](http://localhost:4173)
+Then visit: [http://localhost:4173/pages/index.html](http://localhost:4173/pages/index.html)
 
 ### Using Node.js (npx serve):
 ```sh

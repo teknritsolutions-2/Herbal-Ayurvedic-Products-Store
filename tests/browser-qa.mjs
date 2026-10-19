@@ -6,7 +6,7 @@ import { fileURLToPath } from 'node:url';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
-const distDir = path.resolve(__dirname, '..');
+const distDir = path.resolve(__dirname, '..', 'dist');
 
 // Simple static server for testing dist/
 const mimeTypes = {
@@ -24,7 +24,7 @@ const mimeTypes = {
 
 const server = http.createServer(async (req, res) => {
   let reqPath = decodeURI(req.url.split('?')[0]);
-  if (reqPath === '/' || reqPath === '') reqPath = '/index.html';
+  if (reqPath === '/' || reqPath === '') reqPath = '/pages/index.html';
   const filePath = path.join(distDir, reqPath);
 
   try {
