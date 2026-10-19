@@ -26,17 +26,17 @@
 ## 📁 Project Structure
 
 ```text
-├── .github/
-│   └── workflows/
-│       └── deploy.yml        # GitHub Actions workflow for automated Pages deployment
 ├── dist/                     # Client template package
-│   ├── assets/               # Stylesheets (style.css, dark-mode.css, rtl.css), JS, fonts, images
-│   ├── documentation/        # Customization guides and image credits
+│   ├── assets/
+│   │   ├── css/              # style.css, dark-mode.css, rtl.css
+│   │   ├── js/               # main.js, shop.js, forms.js, plugins/
+│   │   ├── images/           # Curated herbal and botanical imagery
+│   │   ├── fonts/            # Local web fonts
+│   │   └── brand/            # Vector logos
 │   ├── pages/                # Storefront pages (index.html, about.html, contact.html, etc.)
+│   ├── documentation/        # Customization guides and image credits
 │   └── README.md             # Template guide
-├── tests/                    # Automated browser QA scripts and screenshots
 ├── .gitignore                # Git ignore rules
-├── package.json              # Project scripts and test dependencies
 └── README.md                 # Project documentation
 ```
 
@@ -56,23 +56,3 @@ Then visit: [http://localhost:4173/pages/index.html](http://localhost:4173/pages
 ```sh
 npx serve dist
 ```
-
----
-
-## 🧪 Automated QA & Visual Regression Testing
-
-The test suite validates responsive rendering across 11 standard viewport breakpoints (320px, 360px, 390px, 430px, 640px, 768px, 820px, 1024px, 1280px, 1440px, 1920px), Home dropdown lifecycle, 5-category filtering, Doctor Consultation multi-step booking, Wholesale form mode switching, Dark Mode contrast, and RTL layout:
-
-```sh
-# Run browser QA and screenshot generation
-npm test
-```
-
----
-
-## 🛠️ Deployment
-
-This project deploys automatically to **GitHub Pages** via GitHub Actions whenever changes are pushed to the `main` branch.
-
-- **Workflow file**: `.github/workflows/deploy.yml`
-- **Publish directory**: `dist`
