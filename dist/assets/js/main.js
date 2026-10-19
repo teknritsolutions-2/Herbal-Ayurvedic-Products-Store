@@ -95,11 +95,6 @@
                 <img class="brand-dark" src="../assets/brand/logo-dark.svg" alt="VanaVeda">
               </a>
               <p>Botanical goods for considered daily rituals. Clear ingredients, practical directions, no miracle language.</p>
-              <button class="back-to-top" data-back-to-top aria-label="Back to top" type="button">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                  <path d="M18 15l-6-6-6 6"/>
-                </svg>
-              </button>
             </div>
             <div>
               <h2>Shop</h2>
@@ -146,6 +141,11 @@
     }
 
     document.body.insertAdjacentHTML('beforeend', `
+      <button class="back-to-top" data-back-to-top aria-label="Back to top" type="button">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M18 15l-6-6-6 6"/>
+        </svg>
+      </button>
       <div class="drawer-backdrop" data-cart-backdrop></div>
       <aside class="cart-drawer" data-cart-drawer aria-label="Shopping bag">
         <div class="drawer-head">
@@ -338,6 +338,20 @@
     }
 
     setupReveal();
+
+    const btt = document.querySelector('[data-back-to-top]');
+    if (btt) {
+      const updateBackToTop = () => {
+        // Appears after scrolling into the second or third section (>= 450px)
+        if (window.scrollY > 450) {
+          btt.classList.add('is-visible');
+        } else {
+          btt.classList.remove('is-visible');
+        }
+      };
+      window.addEventListener('scroll', updateBackToTop, { passive: true });
+      updateBackToTop();
+    }
   }
 
   function openSearch() {

@@ -160,3 +160,5 @@ html[data-theme="dark"] .footer p{color:#CFC7C0}
 html[data-theme="dark"] .footer a:not(.footer-brand){color:#E5DDD7}
 html[data-theme="dark"] .footer a:hover{color:#FFF}
 html[data-theme="dark"] .newsletter input{background:#222326;border-color:#454146;color:#F7F2EC}
+html[data-theme="dark"] .back-to-top{background:var(--surface-elevated,#252220);border-color:rgba(255,255,255,.22);color:#fff;box-shadow:0 4px 18px rgba(0,0,0,.45)}
+html[data-theme="dark"] .back-to-top:hover{background:var(--terracotta);border-color:var(--terracotta);color:#fff}

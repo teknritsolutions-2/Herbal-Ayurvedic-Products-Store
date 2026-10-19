@@ -483,7 +483,33 @@ console.log('Validating screenshot-specific collection and composition fixes...'
     problems.push(`Home 1 consultation preview has ${home1Consult.stepsCount} subordinate steps; expected 3`);
   }
 
-  // Footer back-to-top circular button
+  // Home 1 hero banner actions: Book Doctor Consultation button should NOT be in the hero
+  const heroButtons = await page.locator('.hero__actions a').allInnerTexts();
+  if (heroButtons.some(t => t.toLowerCase().includes('consultation'))) {
+    problems.push(`Home 1 hero banner still has consultation button: "${heroButtons.join(', ')}"; expected only "Shop all products" and "Explore ingredients"`);
+  }
+  if (!heroButtons.some(t => t.toLowerCase().includes('shop all products')) || !heroButtons.some(t => t.toLowerCase().includes('explore ingredients'))) {
+    problems.push(`Home 1 hero banner missing primary shop or ingredients actions: "${heroButtons.join(', ')}"`);
+  }
+
+  // Sticky back-to-top circular button
+  const bttInitial = await page.locator('.back-to-top').first().evaluate(el => {
+    return {
+      isVisibleClass: el.classList.contains('is-visible'),
+      position: getComputedStyle(el).position
+    };
+  });
+  if (bttInitial.position !== 'fixed') {
+    problems.push(`Back-to-top position is ${bttInitial.position}; expected "fixed"`);
+  }
+  if (bttInitial.isVisibleClass) {
+    problems.push('Back-to-top is visible at the top of the page; expected to be hidden until scrolled past hero');
+  }
+
+  // Scroll down past hero into 2nd/3rd section
+  await page.evaluate(() => window.scrollTo(0, 800));
+  await page.waitForTimeout(100);
+
   const btt = await page.locator('.back-to-top').first().evaluate(el => {
     const rect = el.getBoundingClientRect();
     const style = getComputedStyle(el);
@@ -493,23 +519,37 @@ console.log('Validating screenshot-specific collection and composition fixes...'
       radius: style.borderRadius,
       ariaLabel: el.getAttribute('aria-label'),
       text: el.innerText.trim(),
-      hasSvg: !!el.querySelector('svg')
+      hasSvg: !!el.querySelector('svg'),
+      isVisibleClass: el.classList.contains('is-visible'),
+      opacity: parseFloat(style.opacity),
+      position: style.position
     };
   });
+  if (!btt.isVisibleClass || btt.opacity < 0.9) {
+    problems.push('Back-to-top did not become visible after scrolling down past 450px');
+  }
   if (Math.abs(btt.width - btt.height) > 4 || btt.width < 38 || btt.width > 50) {
-    problems.push(`Footer back-to-top is ${btt.width}x${btt.height}px; expected compact circular button (~42-44px)`);
+    problems.push(`Back-to-top is ${btt.width}x${btt.height}px; expected compact circular button (~42-44px)`);
   }
   if (!btt.radius.includes('50%') && parseFloat(btt.radius) < 20) {
-    problems.push(`Footer back-to-top border-radius is ${btt.radius}; expected circular shape`);
+    problems.push(`Back-to-top border-radius is ${btt.radius}; expected circular shape`);
   }
   if (btt.text.length > 0) {
-    problems.push(`Footer back-to-top has visible text "${btt.text}"; expected icon only`);
+    problems.push(`Back-to-top has visible text "${btt.text}"; expected icon only`);
   }
   if (!btt.hasSvg) {
-    problems.push('Footer back-to-top is missing upward SVG icon');
+    problems.push('Back-to-top is missing upward SVG icon');
   }
   if (btt.ariaLabel !== 'Back to top') {
-    problems.push(`Footer back-to-top has unexpected aria-label "${btt.ariaLabel}"`);
+    problems.push(`Back-to-top has unexpected aria-label "${btt.ariaLabel}"`);
+  }
+
+  // Click back-to-top button
+  await page.locator('.back-to-top').first().click();
+  await page.waitForTimeout(400);
+  const scrollYAfterClick = await page.evaluate(() => window.scrollY);
+  if (scrollYAfterClick > 50) {
+    problems.push(`Clicking back-to-top did not scroll back to top (scrollY is ${scrollYAfterClick})`);
   }
 
   // Certifications Documentation CTA

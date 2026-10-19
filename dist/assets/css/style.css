@@ -634,11 +634,13 @@ svg{fill:none;stroke:currentColor;stroke-linecap:round;stroke-linejoin:round;str
 
 .hours-list li{display:flex;justify-content:space-between;border-bottom:1px solid var(--line);padding-bottom:6px}
 
-/* Footer additions */
-.back-to-top{margin-top:20px;width:44px;height:44px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;background:rgba(255,255,255,.06);color:#fff;border:1px solid rgba(255,255,255,.22);cursor:pointer;padding:0;transition:background-color .2s ease,border-color .2s ease,transform .2s ease,color .2s ease}
-.back-to-top:hover{background:var(--terracotta);border-color:var(--terracotta);color:#fff;transform:translateY(-2px)}
+/* Sticky Back to Top Button */
+.back-to-top{position:fixed;right:28px;bottom:28px;width:44px;height:44px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;background:var(--dark);color:#fff;border:1px solid rgba(255,255,255,.22);box-shadow:0 4px 18px rgba(0,0,0,.24);cursor:pointer;padding:0;z-index:90;opacity:0;visibility:hidden;pointer-events:none;transform:translateY(14px);transition:opacity .25s ease,transform .25s ease,visibility .25s ease,background-color .2s ease,border-color .2s ease,box-shadow .2s ease}
+.back-to-top.is-visible{opacity:1;visibility:visible;pointer-events:auto;transform:translateY(0)}
+.back-to-top:hover{background:var(--terracotta);border-color:var(--terracotta);color:#fff;transform:translateY(-2px);box-shadow:0 6px 20px rgba(184,80,54,.35)}
 .back-to-top:focus-visible{outline:2px solid var(--rose);outline-offset:3px}
 .back-to-top svg{display:block;pointer-events:none}
+[dir="rtl"] .back-to-top{right:auto;left:28px}
 
 .footer-newsletter{margin-top:20px}
 
@@ -696,7 +698,8 @@ svg{fill:none;stroke:currentColor;stroke-linecap:round;stroke-linejoin:round;str
   .hair-grid{grid-template-columns:1fr 1fr;gap:20px 10px}
 
   .ingredient-filter-strip__link{width:100%;margin-inline-start:0}
-
+  .back-to-top{right:18px;bottom:18px}
+  [dir="rtl"] .back-to-top{right:auto;left:18px}
 }
 
 @media(max-width:560px){.category-grid,.product-grid,.glossary-grid{grid-template-columns:1fr}
