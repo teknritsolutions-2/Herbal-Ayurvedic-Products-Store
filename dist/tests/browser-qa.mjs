@@ -428,6 +428,111 @@ console.log('Validating screenshot-specific collection and composition fixes...'
   const chapterColumns = await page.locator('.editorial-index').evaluate(element => getComputedStyle(element).gridTemplateColumns.split(' ').length);
   if (chapterColumns !== 3) problems.push(`Home 2 desktop chapter index uses ${chapterColumns} columns instead of 3`);
 
+  const chapterWrapGeometry = await page.evaluate(() => {
+    const hero = document.querySelector('.editorial-hero').getBoundingClientRect();
+    const wrap = document.querySelector('.editorial-index-wrap').getBoundingClientRect();
+    const morning = document.querySelector('#morning').getBoundingClientRect();
+    return { topGap: wrap.top - hero.bottom, bottomGap: morning.top - wrap.bottom };
+  });
+  if (chapterWrapGeometry.topGap < 20 || chapterWrapGeometry.topGap > 55) {
+    problems.push(`Home 2 chapter index top gap is ${chapterWrapGeometry.topGap.toFixed(1)}px; expected roughly 24–48px`);
+  }
+  if (chapterWrapGeometry.bottomGap < 24 || chapterWrapGeometry.bottomGap > 60) {
+    problems.push(`Home 2 chapter index bottom gap is ${chapterWrapGeometry.bottomGap.toFixed(1)}px; expected roughly 28–52px`);
+  }
+
+  // Home 2 consultation banner refinement
+  const home2Banner = await page.locator('#consultation .consult-banner').evaluate(el => {
+    const style = getComputedStyle(el);
+    return {
+      radius: parseFloat(style.borderRadius),
+      hasImg: !!el.querySelector('img'),
+      btnText: el.querySelector('.button')?.textContent.trim()
+    };
+  });
+  if (home2Banner.radius < 20) {
+    problems.push(`Home 2 consultation banner border-radius is ${home2Banner.radius}px; expected softly rounded corners (>=20px)`);
+  }
+  if (home2Banner.btnText !== 'Start a Consultation Request') {
+    problems.push(`Home 2 consultation button has unexpected text: "${home2Banner.btnText}"`);
+  }
+
+  // Home 1 consultation preview & Footer Back to top
+  await page.goto(`${base}/index.html`, { waitUntil: 'domcontentloaded' });
+  const home1Consult = await page.locator('.consult-preview').evaluate(el => {
+    const style = getComputedStyle(el);
+    const steps = [...el.querySelectorAll('.consult-step-item')].map(s => s.textContent.trim());
+    return {
+      hasImmersive: el.classList.contains('consult-preview--immersive'),
+      radius: parseFloat(style.borderRadius),
+      hasPhoto: !!el.querySelector('.consult-preview__photo img'),
+      stepsCount: steps.length,
+      btnText: el.querySelector('.button')?.textContent.trim()
+    };
+  });
+  if (home1Consult.hasImmersive) {
+    problems.push('Home 1 consultation preview should not have .consult-preview--immersive');
+  }
+  if (home1Consult.radius < 20) {
+    problems.push(`Home 1 consultation preview border-radius is ${home1Consult.radius}px; expected softly rounded corners`);
+  }
+  if (!home1Consult.hasPhoto) {
+    problems.push('Home 1 consultation preview is missing right-side photo');
+  }
+  if (home1Consult.stepsCount !== 3) {
+    problems.push(`Home 1 consultation preview has ${home1Consult.stepsCount} subordinate steps; expected 3`);
+  }
+
+  // Footer back-to-top circular button
+  const btt = await page.locator('.back-to-top').first().evaluate(el => {
+    const rect = el.getBoundingClientRect();
+    const style = getComputedStyle(el);
+    return {
+      width: rect.width,
+      height: rect.height,
+      radius: style.borderRadius,
+      ariaLabel: el.getAttribute('aria-label'),
+      text: el.innerText.trim(),
+      hasSvg: !!el.querySelector('svg')
+    };
+  });
+  if (Math.abs(btt.width - btt.height) > 4 || btt.width < 38 || btt.width > 50) {
+    problems.push(`Footer back-to-top is ${btt.width}x${btt.height}px; expected compact circular button (~42-44px)`);
+  }
+  if (!btt.radius.includes('50%') && parseFloat(btt.radius) < 20) {
+    problems.push(`Footer back-to-top border-radius is ${btt.radius}; expected circular shape`);
+  }
+  if (btt.text.length > 0) {
+    problems.push(`Footer back-to-top has visible text "${btt.text}"; expected icon only`);
+  }
+  if (!btt.hasSvg) {
+    problems.push('Footer back-to-top is missing upward SVG icon');
+  }
+  if (btt.ariaLabel !== 'Back to top') {
+    problems.push(`Footer back-to-top has unexpected aria-label "${btt.ariaLabel}"`);
+  }
+
+  // Certifications Documentation CTA
+  await page.goto(`${base}/certifications.html`, { waitUntil: 'domcontentloaded' });
+  const docCta = await page.locator('.documentation-cta').evaluate(el => {
+    const style = getComputedStyle(el);
+    const buttons = [...el.querySelectorAll('.button')].map(b => b.textContent.trim());
+    return {
+      maxWidth: parseFloat(style.maxWidth),
+      textAlign: style.textAlign,
+      buttons
+    };
+  });
+  if (docCta.textAlign !== 'center') {
+    problems.push(`Certifications documentation CTA text-align is "${docCta.textAlign}"; expected center`);
+  }
+  if (docCta.maxWidth < 650 || docCta.maxWidth > 900) {
+    problems.push(`Certifications documentation CTA max-width is ${docCta.maxWidth}px; expected 700–850px`);
+  }
+  if (!docCta.buttons.includes('Submit Documentation Request') || !docCta.buttons.includes('Return to Shop')) {
+    problems.push(`Certifications documentation CTA missing expected buttons: ${JSON.stringify(docCta.buttons)}`);
+  }
+
   await page.goto(`${base}/contact.html`, { waitUntil: 'domcontentloaded' });
   const contactGeometry = await page.evaluate(() => {
     const hero = document.querySelector('.page-hero').getBoundingClientRect();

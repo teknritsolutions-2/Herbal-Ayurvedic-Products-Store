@@ -149,6 +149,11 @@ html[data-theme="dark"] .spotlight p,
 html[data-theme="dark"] .spotlight .eyebrow,
 html[data-theme="dark"] .spotlight .latin,
 html[data-theme="dark"] .spotlight .spotlight-products__title{color:#FFF}
+html[data-theme="dark"] .documentation-cta h2{color:var(--cream)}
+html[data-theme="dark"] .documentation-cta .lead{color:var(--muted)}
+html[data-theme="dark"] .editorial-index strong{color:var(--cream)}
+html[data-theme="dark"] .consult-step-item{color:#E2D9D3}
+html[data-theme="dark"] .home2-consultation .consult-banner .lead{color:#E2D9D3}
 
 html[data-theme="dark"] .footer{background:#111113}
 html[data-theme="dark"] .footer p{color:#CFC7C0}

@@ -30,32 +30,34 @@
     </section>
 
     <!-- 2. Chapter Index Navigation -->
-    <nav class="editorial-index" aria-label="On this page">
-      <a href="#morning">
-        <small>Chapter 01</small>
-        <strong>The First Pour</strong>
-      </a>
-      <a href="#oils">
-        <small>Chapter 02</small>
-        <strong>Abhyanga & Body Oils</strong>
-      </a>
-      <a href="#rituals">
-        <small>Chapter 03</small>
-        <strong>Hair & Skin Pairings</strong>
-      </a>
-      <a href="#journey">
-        <small>Chapter 04</small>
-        <strong>The Plant Journey</strong>
-      </a>
-      <a href="#quality">
-        <small>Chapter 05</small>
-        <strong>Quality & Traceability</strong>
-      </a>
-      <a href="#consultation">
-        <small>Chapter 06</small>
-        <strong>Personal Guidance</strong>
-      </a>
-    </nav>
+    <div class="container editorial-index-wrap">
+      <nav class="editorial-index" aria-label="On this page">
+        <a href="#morning">
+          <small>Chapter 01</small>
+          <strong>The First Pour</strong>
+        </a>
+        <a href="#oils">
+          <small>Chapter 02</small>
+          <strong>Abhyanga & Body Oils</strong>
+        </a>
+        <a href="#rituals">
+          <small>Chapter 03</small>
+          <strong>Hair & Skin Pairings</strong>
+        </a>
+        <a href="#journey">
+          <small>Chapter 04</small>
+          <strong>The Plant Journey</strong>
+        </a>
+        <a href="#quality">
+          <small>Chapter 05</small>
+          <strong>Quality & Traceability</strong>
+        </a>
+        <a href="#consultation">
+          <small>Chapter 06</small>
+          <strong>Personal Guidance</strong>
+        </a>
+      </nav>
+    </div>
 
     <!-- 3. Chapter 01: The First Pour (Morning Tea Story) -->
     <section class="section" id="morning">
@@ -103,7 +105,7 @@
 
         <div class="rituals-grid">
           <div class="evidence-card" data-reveal>
-            <span class="number" style="font-size:1.8rem;color:var(--brick);">Ritual 01 · Scalp & Complexion</span>
+            <span class="number" style="font-size:1.8rem;color:var(--accent-text);">Ritual 01 · Scalp & Complexion</span>
             <h3 style="font-size:1.8rem;margin:10px 0;">Neem & Rose Awakening</h3>
             <p>Clarify reactive skin with gentle neem cloud foam while replenishing dry strands with botanical pre-wash oils.</p>
             <div class="inline-actions">
@@ -113,7 +115,7 @@
           </div>
 
           <div class="evidence-card" data-reveal>
-            <span class="number" style="font-size:1.8rem;color:var(--brick);">Ritual 02 · Deep Moisture & Calming</span>
+            <span class="number" style="font-size:1.8rem;color:var(--accent-text);">Ritual 02 · Deep Moisture & Calming</span>
             <h3 style="font-size:1.8rem;margin:10px 0;">Sandalwood & Botanical Mask</h3>
             <p>Blend custom sandalwood clay with floral waters while infusing parched lengths with rich fenugreek conditioning.</p>
             <div class="inline-actions">
@@ -183,14 +185,18 @@
     <section class="section section--surface home2-consultation" id="consultation">
       <div class="container">
         <div class="consult-banner" data-reveal>
-          <div>
+          <div class="consult-banner__content">
             <p class="eyebrow" style="color:var(--rose);">Chapter 06 · Personal Guidance</p>
             <h2>Request a considered consultation.</h2>
             <p class="lead">Share your preferred format and wellness focus through a structured appointment request.</p>
             <p>Availability, practitioner credentials, timing, and any next steps are confirmed before an appointment is established.</p>
-            <a class="button button--light" href="consultation.html">Start a Consultation Request</a>
+            <div class="consult-banner__action">
+              <a class="button button--light" href="consultation.html">Start a Consultation Request</a>
+            </div>
           </div>
-          <img src="../assets/images/doctor-desk.jpg" alt="Calm Ayurvedic practitioner desk ready for consultation">
+          <div class="consult-banner__photo">
+            <img src="../assets/images/doctor-desk.jpg" alt="Calm Ayurvedic practitioner desk ready for consultation" loading="lazy">
+          </div>
         </div>
       </div>
     </section>

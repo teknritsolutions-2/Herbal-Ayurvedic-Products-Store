@@ -95,7 +95,11 @@
                 <img class="brand-dark" src="../assets/brand/logo-dark.svg" alt="VanaVeda">
               </a>
               <p>Botanical goods for considered daily rituals. Clear ingredients, practical directions, no miracle language.</p>
-              <button class="button button--outline button--small back-to-top" data-back-to-top aria-label="Back to top">↑ Back to top</button>
+              <button class="back-to-top" data-back-to-top aria-label="Back to top" type="button">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M18 15l-6-6-6 6"/>
+                </svg>
+              </button>
             </div>
             <div>
               <h2>Shop</h2>
@@ -291,7 +295,8 @@
 
       // Back to top
       if (e.target.closest('[data-back-to-top]')) {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
+        const prefersReducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        window.scrollTo({ top: 0, behavior: prefersReducedMotion ? 'auto' : 'smooth' });
       }
     });
 

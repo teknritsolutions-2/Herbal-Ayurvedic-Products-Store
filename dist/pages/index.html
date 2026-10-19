@@ -239,18 +239,22 @@
     <!-- 9. Doctor Consultation Booking Preview -->
     <section class="section">
       <div class="container">
-        <div class="consult-preview consult-preview--immersive" data-reveal>
-          <img class="consult-preview__media" src="../assets/images/doctor-desk.jpg" alt="A calm desk prepared for a consultation request">
+        <div class="consult-preview" data-reveal>
           <div class="consult-preview__copy">
             <p class="eyebrow" style="color:var(--rose);">Clinical Guidance</p>
             <h2>Begin with a consultation request.</h2>
             <p>Share your preferred format, timing, and wellness focus. Provider availability and credentials are confirmed before any appointment is established.</p>
-            <a class="button button--light" href="consultation.html">Start the request</a>
+            <div class="consult-preview__action">
+              <a class="button button--light" href="consultation.html">Start the request</a>
+            </div>
+            <div class="consult-preview__steps" aria-label="Consultation request process">
+              <div class="consult-step-item"><b>01</b> <span>Share preferences</span></div>
+              <div class="consult-step-item"><b>02</b> <span>Availability review</span></div>
+              <div class="consult-step-item"><b>03</b> <span>Receive confirmation</span></div>
+            </div>
           </div>
-          <div class="consult-request-path" aria-label="Consultation request process">
-            <span><b>01</b> Share preferences</span>
-            <span><b>02</b> Availability review</span>
-            <span><b>03</b> Receive confirmation</span>
+          <div class="consult-preview__photo">
+            <img class="consult-preview__media" src="../assets/images/doctor-desk.jpg" alt="A calm desk prepared for a consultation request" loading="lazy">
           </div>
         </div>
       </div>

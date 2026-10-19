@@ -529,11 +529,18 @@ svg{fill:none;stroke:currentColor;stroke-linecap:round;stroke-linejoin:round;str
 .cert-preview-card img{width:100%;aspect-ratio:4/3;max-height:340px;object-fit:cover;border-radius:20px}
 
 /* Doctor Consultation Preview */
-.consult-preview{display:grid;grid-template-columns:1fr 1fr;gap:44px;align-items:center;padding:52px;border-radius:28px;background:var(--dark);color:#fff}
-
-.consult-preview h2{color:#fff}
-
-.consult-preview p{color:#d8c8bd}
+.consult-preview{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(280px,.85fr);gap:44px;align-items:center;padding:48px 52px;border-radius:28px;background:var(--dark);color:#fff;overflow:hidden}
+.consult-preview h2{color:#fff;font-size:clamp(2rem,3.2vw,2.75rem);line-height:1.18;margin-bottom:16px}
+.consult-preview p{color:#d8c8bd;line-height:1.6}
+.consult-preview__copy p{margin-bottom:24px;max-width:540px}
+.consult-preview__action{margin-bottom:24px}
+.consult-preview__media{width:100%;aspect-ratio:4/3;max-height:320px;object-fit:cover;border-radius:20px;display:block}
+.consult-preview__photo{border-radius:20px;overflow:hidden;box-shadow:0 16px 36px rgba(0,0,0,0.28)}
+.consult-preview__photo img{width:100%;aspect-ratio:4/3;max-height:320px;object-fit:cover;display:block;border-radius:20px}
+.consult-preview__steps{display:flex;flex-wrap:wrap;gap:14px 24px;padding-top:22px;border-top:1px solid rgba(255,255,255,0.14)}
+.consult-step-item{display:inline-flex;align-items:center;gap:8px;font-size:.88rem;color:#e4d7cf}
+.consult-step-item b{color:var(--rose);font-family:Fraunces,Georgia,serif;font-size:1.05rem}
+.consult-step-item span{font-weight:500;letter-spacing:.01em}
 
 .consult-features{display:grid;gap:14px;margin:24px 0}
 
@@ -628,7 +635,10 @@ svg{fill:none;stroke:currentColor;stroke-linecap:round;stroke-linejoin:round;str
 .hours-list li{display:flex;justify-content:space-between;border-bottom:1px solid var(--line);padding-bottom:6px}
 
 /* Footer additions */
-.back-to-top{margin-top:18px}
+.back-to-top{margin-top:20px;width:44px;height:44px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;background:rgba(255,255,255,.06);color:#fff;border:1px solid rgba(255,255,255,.22);cursor:pointer;padding:0;transition:background-color .2s ease,border-color .2s ease,transform .2s ease,color .2s ease}
+.back-to-top:hover{background:var(--terracotta);border-color:var(--terracotta);color:#fff;transform:translateY(-2px)}
+.back-to-top:focus-visible{outline:2px solid var(--rose);outline-offset:3px}
+.back-to-top svg{display:block;pointer-events:none}
 
 .footer-newsletter{margin-top:20px}
 
@@ -709,14 +719,23 @@ svg{fill:none;stroke:currentColor;stroke-linecap:round;stroke-linejoin:round;str
 .product-grid[data-item-count="3"]{grid-template-columns:repeat(3,minmax(0,1fr))}
 
 #morning,#oils,#rituals,#journey,#quality,#consultation{scroll-margin-top:96px}
-.editorial-index a{min-height:126px;display:flex;flex-direction:column;justify-content:center;transition:background-color .2s ease,color .2s ease}
+.editorial-index-wrap{margin-top:34px;margin-bottom:42px}
+.editorial-index{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:16px;overflow:hidden}
+.editorial-index a{padding:26px 28px;background:var(--surface);min-height:106px;display:flex;flex-direction:column;justify-content:center;transition:background-color .2s ease,color .2s ease;text-decoration:none}
 .editorial-index a:hover,.editorial-index a:focus-visible{background:var(--wash);color:var(--accent-text);outline:0}
 .editorial-index a:focus-visible{box-shadow:inset 0 0 0 3px var(--focus-ring)}
+.editorial-index small{display:block;color:var(--accent-text);font-weight:700;font-size:.8rem;letter-spacing:.05em;text-transform:uppercase;margin-bottom:4px}
+.editorial-index strong{font:600 1.25rem Fraunces,Georgia,serif;color:var(--dark);line-height:1.25}
 .home2-quality .cert-preview-card{grid-template-columns:minmax(260px,.7fr) minmax(0,1.3fr);align-items:stretch;padding:0;overflow:hidden}
 .home2-quality .cert-preview-card>img{order:-1;height:100%;max-height:none;aspect-ratio:auto;border-radius:0}
 .home2-quality .cert-preview-card>div{padding:42px}
-.home2-consultation .consult-banner{border-radius:0;grid-template-columns:minmax(0,1.25fr) minmax(260px,.75fr);padding:46px 52px}
-.home2-consultation .consult-banner img{aspect-ratio:16/10;max-height:300px}
+.home2-consultation .consult-banner{border-radius:28px;grid-template-columns:minmax(0,1.15fr) minmax(280px,.85fr);padding:48px 52px;background:var(--dark);border:1px solid rgba(199,123,99,.22);gap:44px;align-items:center;overflow:hidden}
+.home2-consultation .consult-banner h2{font-size:clamp(2rem,3.2vw,2.6rem);line-height:1.18;margin-bottom:16px;color:#fff}
+.home2-consultation .consult-banner .lead{color:#e4d7cf;font-size:1.1rem;line-height:1.55;margin-bottom:12px}
+.home2-consultation .consult-banner p:not(.lead):not(.eyebrow){color:#d8c8bd;font-size:.98rem;line-height:1.6;margin-bottom:24px;max-width:520px}
+.home2-consultation .consult-banner .consult-banner__action{margin-top:8px}
+.home2-consultation .consult-banner .consult-banner__photo{border-radius:20px;overflow:hidden;box-shadow:0 16px 36px rgba(0,0,0,.28)}
+.home2-consultation .consult-banner img{aspect-ratio:4/3;max-height:320px;width:100%;object-fit:cover;border-radius:20px;display:block}
 
 .quality-strip{grid-template-columns:minmax(240px,.8fr) minmax(360px,1.25fr) minmax(190px,.55fr);gap:0;align-items:stretch;padding:0;overflow:hidden;border-radius:18px}
 .quality-strip__intro{display:flex;flex-direction:column;align-items:flex-start;justify-content:center;padding:36px}
@@ -730,15 +749,12 @@ svg{fill:none;stroke:currentColor;stroke-linecap:round;stroke-linejoin:round;str
 .quality-strip__checks p{margin:3px 0 0;font-size:.875rem;line-height:1.5}
 .cert-preview-card .quality-strip__media{width:100%;height:100%;max-height:none;aspect-ratio:auto;border-radius:0;object-fit:cover}
 
-.consult-preview--immersive{position:relative;isolation:isolate;min-height:470px;display:grid;grid-template-columns:minmax(0,1.2fr) minmax(300px,.8fr);align-items:end;gap:38px;padding:56px;overflow:hidden;border-radius:0;background:#171313}
-.consult-preview--immersive:after{content:"";position:absolute;z-index:-1;inset:0;background:linear-gradient(90deg,rgba(17,14,13,.96) 0%,rgba(17,14,13,.84) 48%,rgba(17,14,13,.28) 100%)}
-.consult-preview__media{position:absolute;z-index:-2;inset:0;width:100%;height:100%;object-fit:cover;object-position:center}
-.consult-preview__copy{max-width:660px}
-.consult-preview__copy h2{font-size:clamp(2.6rem,4.5vw,4.8rem)}
-.consult-request-path{position:relative;z-index:1;display:grid;gap:0;align-self:end;border:1px solid rgba(255,255,255,.22);background:rgba(20,17,16,.7);backdrop-filter:blur(12px)}
-.consult-request-path span{display:grid;grid-template-columns:34px 1fr;align-items:center;gap:10px;padding:17px 20px;border-bottom:1px solid rgba(255,255,255,.16);color:#fff;font-weight:600}
-.consult-request-path span:last-child{border-bottom:0}
-.consult-request-path b{color:var(--rose);font-family:Fraunces}
+/* Centered Documentation CTA on Certifications page */
+.documentation-cta{max-width:780px;margin:0 auto;text-align:center}
+.documentation-cta .eyebrow{display:block;margin-bottom:12px}
+.documentation-cta h2{font-size:clamp(2rem,3.4vw,2.75rem);line-height:1.18;margin-bottom:16px;color:var(--dark)}
+.documentation-cta .lead{font-size:1.12rem;line-height:1.6;color:var(--muted);margin:0 auto 28px;max-width:660px}
+.documentation-cta__actions{display:flex;justify-content:center;align-items:center;flex-wrap:wrap;gap:16px}
 
 .contact-enquiry-section{padding:52px 0 80px}
 .contact-layout{grid-template-columns:minmax(300px,.78fr) minmax(0,1.22fr);align-items:start;gap:56px;padding-bottom:0}
@@ -795,11 +811,10 @@ svg{fill:none;stroke:currentColor;stroke-linecap:round;stroke-linejoin:round;str
 @media(max-width:1120px){
   .product-grid,.product-grid[data-item-count="3"]{grid-template-columns:repeat(2,minmax(0,1fr))}
   .quality-strip{grid-template-columns:1fr 1.15fr}
-  .quality-strip__checks{border-inline-end:0}
   .cert-preview-card .quality-strip__media{grid-column:1/-1;height:auto;aspect-ratio:16/4;max-height:190px}
-  .consult-preview--immersive{grid-template-columns:1fr minmax(280px,.65fr)}
+  .consult-preview{grid-template-columns:1fr;gap:36px;padding:40px 32px}
+  .home2-consultation .consult-banner{grid-template-columns:1fr;gap:32px;padding:40px 32px}
   .contact-layout{grid-template-columns:minmax(280px,.75fr) minmax(0,1.25fr);gap:34px}
-  .contact-card{padding:32px}
   .contact-forms-container{padding:26px}
   .consultation-note.consultation-process{grid-template-columns:1fr}
   .consultation-note.consultation-process img{height:auto;max-height:330px;aspect-ratio:16/6}
@@ -811,10 +826,10 @@ svg{fill:none;stroke:currentColor;stroke-linecap:round;stroke-linejoin:round;str
   .contact-layout{grid-template-columns:1fr;gap:30px}
   .contact-card__actions{grid-template-columns:repeat(2,minmax(0,1fr))}
   .store-location-card{grid-template-columns:1fr;gap:26px;padding:32px}
-  .consult-preview--immersive{grid-template-columns:1fr;min-height:520px}
-  .consult-request-path{grid-template-columns:repeat(3,minmax(0,1fr))}
-  .consult-request-path span{grid-template-columns:1fr;border-bottom:0;border-inline-end:1px solid rgba(255,255,255,.16)}
-  .consult-request-path span:last-child{border-inline-end:0}
+  .editorial-index-wrap{padding-top:28px;padding-bottom:34px}
+  .editorial-index{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .editorial-index a{min-height:96px;padding:20px 22px}
+  .editorial-index strong{font-size:1.15rem}
   .quality-evidence{grid-template-columns:1fr}
   .cert-preview-card.quality-evidence>img{height:auto;aspect-ratio:16/6;max-height:260px}
   .status-panel.registry-toolbar{align-items:flex-start}
@@ -822,17 +837,22 @@ svg{fill:none;stroke:currentColor;stroke-linecap:round;stroke-linejoin:round;str
 
 @media(max-width:680px){
   .product-grid,.product-grid[data-item-count="3"]{grid-template-columns:repeat(2,minmax(0,1fr))}
-  .editorial-index{grid-template-columns:repeat(2,minmax(0,1fr))}
-  .editorial-index a{min-height:112px;padding:22px}
-  .editorial-index strong{font-size:1.2rem}
+  .editorial-index-wrap{padding-top:20px;padding-bottom:28px}
+  .editorial-index{grid-template-columns:1fr;border-radius:14px}
+  .editorial-index a{min-height:auto;padding:16px 20px}
+  .editorial-index strong{font-size:1.1rem}
   .quality-strip{grid-template-columns:1fr}
   .quality-strip__intro{padding:28px 24px}
   .quality-strip__checks{padding:10px 24px;border:0;border-top:1px solid var(--line)}
   .cert-preview-card .quality-strip__media{grid-column:auto;aspect-ratio:16/7;max-height:210px}
-  .consult-preview--immersive{min-height:560px;padding:36px 24px}
-  .consult-request-path{grid-template-columns:1fr}
-  .consult-request-path span{grid-template-columns:34px 1fr;border-inline-end:0;border-bottom:1px solid rgba(255,255,255,.16)}
-  .consult-request-path span:last-child{border-bottom:0}
+  .consult-preview{padding:30px 22px;border-radius:24px;gap:28px}
+  .consult-preview__steps{flex-direction:column;gap:12px}
+  .consult-preview__media{aspect-ratio:16/10;max-height:240px}
+  .consult-preview__photo img{aspect-ratio:16/10;max-height:240px}
+  .home2-consultation .consult-banner{padding:30px 22px;border-radius:22px;gap:24px}
+  .home2-consultation .consult-banner img{aspect-ratio:16/10;max-height:240px}
+  .documentation-cta__actions{flex-direction:column;width:100%}
+  .documentation-cta__actions .button{width:100%}
   .contact-enquiry-section{padding:28px 0 46px}
   .contact-card,.contact-forms-container{padding:24px 20px}
   .contact-card__actions{grid-template-columns:1fr}
