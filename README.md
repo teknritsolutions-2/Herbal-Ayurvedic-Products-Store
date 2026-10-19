@@ -35,8 +35,7 @@
 │   │   └── js/               # main.js, shop.js, forms.js, plugins/
 │   ├── documentation/        # Customization guides and image credits
 │   ├── pages/                # Storefront subpages (about.html, contact.html, products.html, etc.)
-│   ├── index.html            # Primary storefront home page
-│   └── README.md             # Template guide
+│   └── index.html            # Primary storefront home page
 └── README.md                 # Project documentation
 ```
 
@@ -56,3 +55,11 @@ Then visit: [http://localhost:4173/index.html](http://localhost:4173/index.html)
 ```sh
 npx serve dist
 ```
+
+---
+
+## 📋 Important Launch Boundaries
+
+- **Cart & Bag**: Saved locally in `localStorage` on the customer device. Connect an e-commerce backend / checkout service before taking live orders.
+- **Form Submissions**: Contact, newsletter, and doctor consultation forms validate locally. Connect authenticated CRM or email API endpoints before production launch.
+- **Documentation & References**: See `dist/documentation/customization.md` for launch checklist and `dist/documentation/image-credits.md` for image source details.
