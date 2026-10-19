@@ -344,9 +344,9 @@ console.log('Validating Products & Hair Care Category...');
   const page = await browser.newPage({ viewport: { width: 1440, height: 900 } });
   await page.goto(`${base}/products.html`, { waitUntil: 'domcontentloaded' });
 
-  const totalProducts = await page.locator('.product-card').count();
-  if (totalProducts < 22) {
-    problems.push(`Products catalog rendered only ${totalProducts} products. Expected at least 22.`);
+  const totalProducts = await page.locator('[data-product-grid] .product-card').count();
+  if (totalProducts !== 27) {
+    problems.push(`Products catalog rendered ${totalProducts} products. Expected 27 after adding the fourth Oils item.`);
   }
 
   // Check Hair Care filter exists
@@ -357,7 +357,7 @@ console.log('Validating Products & Hair Care Category...');
 
   // Filter by Hair Care
   await hairCareFilter.check();
-  const hairCardCount = await page.locator('.product-card').count();
+  const hairCardCount = await page.locator('[data-product-grid] .product-card').count();
   if (hairCardCount < 4) {
     problems.push(`Hair Care filter returned only ${hairCardCount} items. Expected at least 4.`);
   }
@@ -376,6 +376,118 @@ console.log('Validating Products & Hair Care Category...');
 
   const cartCount = await page.locator('[data-cart-count]').first().textContent();
   if (Number(cartCount) < 1) problems.push('Cart item counter did not update');
+
+  await page.close();
+}
+
+console.log('Validating screenshot-specific collection and composition fixes...');
+{
+  const page = await browser.newPage({ viewport: { width: 1440, height: 1000 } });
+
+  await page.goto(`${base}/index.html`, { waitUntil: 'domcontentloaded' });
+  const hairCards = await page.locator('.hair-showcase .product-card').evaluateAll(cards => cards.map(card => ({
+    name: card.querySelector('h3')?.textContent.trim(),
+    image: card.querySelector('img')?.getAttribute('src'),
+    addId: card.querySelector('[data-add-to-cart]')?.getAttribute('data-add-to-cart')
+  })));
+  const expectedHair = [
+    'Bhringraj Scalp & Hair Oil',
+    'Botanical Herbal Hair Cleanser',
+    'Botanical Hair Conditioning Mask',
+    'Neem & Tea Tree Scalp Oil'
+  ];
+  if (JSON.stringify(hairCards.map(card => card.name)) !== JSON.stringify(expectedHair)) {
+    problems.push(`Hair Care screenshot regression: expected four named cards, got ${JSON.stringify(hairCards)}`);
+  }
+  if (new Set(hairCards.map(card => card.image)).size !== 4 || hairCards.some(card => !card.addId)) {
+    problems.push('Hair Care screenshot regression: images must be distinct and every card must retain an Add action');
+  }
+
+  await page.goto(`${base}/home2.html`, { waitUntil: 'domcontentloaded' });
+  const oilCards = await page.locator('#oils .product-card').evaluateAll(cards => cards.map(card => ({
+    name: card.querySelector('h3')?.textContent.trim(),
+    image: card.querySelector('img')?.getAttribute('src')
+  })));
+  if (oilCards.length !== 4 || !oilCards.some(card => card.name === 'Almond & Manjistha Body Oil')) {
+    problems.push(`Home 2 Oils screenshot regression: expected four products including Almond & Manjistha Body Oil, got ${JSON.stringify(oilCards)}`);
+  }
+  if (new Set(oilCards.map(card => card.image)).size !== 4) {
+    problems.push('Home 2 Oils screenshot regression: the four curated products must use varied imagery');
+  }
+
+  const chapterLinks = await page.locator('.editorial-index a').evaluateAll(links => links.map(link => link.getAttribute('href')));
+  const expectedChapters = ['#morning', '#oils', '#rituals', '#journey', '#quality', '#consultation'];
+  if (JSON.stringify(chapterLinks) !== JSON.stringify(expectedChapters)) {
+    problems.push(`Home 2 chapter index must contain six exact destinations. Got ${JSON.stringify(chapterLinks)}`);
+  }
+  for (const destination of chapterLinks) {
+    if (await page.locator(destination).count() !== 1) {
+      problems.push(`Home 2 chapter destination is missing or duplicated: ${destination}`);
+    }
+  }
+  const chapterColumns = await page.locator('.editorial-index').evaluate(element => getComputedStyle(element).gridTemplateColumns.split(' ').length);
+  if (chapterColumns !== 3) problems.push(`Home 2 desktop chapter index uses ${chapterColumns} columns instead of 3`);
+
+  await page.goto(`${base}/contact.html`, { waitUntil: 'domcontentloaded' });
+  const contactGeometry = await page.evaluate(() => {
+    const hero = document.querySelector('.page-hero').getBoundingClientRect();
+    const layout = document.querySelector('.contact-layout').getBoundingClientRect();
+    const aside = document.querySelector('.contact-aside').getBoundingClientRect();
+    const forms = document.querySelector('.contact-forms-container').getBoundingClientRect();
+    const location = document.querySelector('.location-section').getBoundingClientRect();
+    return { gap: layout.top - hero.bottom, asideHeight: aside.height, formsHeight: forms.height, locationTop: location.top, layoutBottom: layout.bottom };
+  });
+  if (contactGeometry.gap < 39 || contactGeometry.gap > 58) {
+    problems.push(`Contact hero transition is ${contactGeometry.gap.toFixed(1)}px; expected roughly 40–56px`);
+  }
+  if (contactGeometry.asideHeight / contactGeometry.formsHeight < .55) {
+    problems.push(`Contact intro is still disproportionately short (${contactGeometry.asideHeight.toFixed(1)} vs ${contactGeometry.formsHeight.toFixed(1)}px)`);
+  }
+  if (contactGeometry.locationTop < contactGeometry.layoutBottom - 1) {
+    problems.push('Store Location must appear below, not beside, the enquiry layout');
+  }
+  const locationText = await page.locator('.store-location-card').innerText();
+  for (const unverified of ['09:30', '18:30', 'Flagship Store & Dispensary', 'accredited partner']) {
+    if (locationText.includes(unverified)) problems.push(`Contact location still publishes unverified detail: ${unverified}`);
+  }
+
+  await page.goto(`${base}/consultation.html`, { waitUntil: 'domcontentloaded' });
+  const consultationGeometry = await page.evaluate(() => {
+    const process = document.querySelector('.consultation-process-section').getBoundingClientRect();
+    const booking = document.querySelector('.booking-section').getBoundingClientRect();
+    const form = document.querySelector('.consult-form').getBoundingClientRect();
+    return { processBottom: process.bottom, bookingTop: booking.top, formWidth: form.width };
+  });
+  if (Math.abs(consultationGeometry.processBottom - consultationGeometry.bookingTop) > 2) {
+    problems.push('Consultation process and booking workflow should be consecutive independent sections');
+  }
+  if (consultationGeometry.formWidth > 950) {
+    problems.push(`Consultation form is ${consultationGeometry.formWidth.toFixed(1)}px wide; expected a compact centered workflow`);
+  }
+
+  await page.goto(`${base}/certifications.html`, { waitUntil: 'domcontentloaded' });
+  const registrySizing = await page.evaluate(() => {
+    const panel = document.querySelector('.registry-toolbar').getBoundingClientRect();
+    const badge = document.querySelector('.registry-toolbar .status-badge').getBoundingClientRect();
+    return { panelWidth: panel.width, badgeWidth: badge.width };
+  });
+  if (registrySizing.badgeWidth > registrySizing.panelWidth * .42) {
+    problems.push(`Registry status control still reserves excessive width (${registrySizing.badgeWidth.toFixed(1)} of ${registrySizing.panelWidth.toFixed(1)}px)`);
+  }
+
+  await page.goto(`${base}/products.html`, { waitUntil: 'domcontentloaded' });
+  const productsSpacing = await page.evaluate(() => {
+    const hero = document.querySelector('.page-hero').getBoundingClientRect();
+    const strip = document.querySelector('.ingredient-filter-strip').getBoundingClientRect();
+    const toolbar = document.querySelector('.shop-toolbar').getBoundingClientRect();
+    return { heroToStrip: strip.top - hero.bottom, stripToToolbar: toolbar.top - strip.bottom };
+  });
+  if (productsSpacing.heroToStrip < 35 || productsSpacing.heroToStrip > 50) {
+    problems.push(`Products hero-to-botanical spacing is ${productsSpacing.heroToStrip.toFixed(1)}px; expected roughly 36–48px`);
+  }
+  if (productsSpacing.stripToToolbar < 23 || productsSpacing.stripToToolbar > 34) {
+    problems.push(`Products botanical-to-toolbar spacing is ${productsSpacing.stripToToolbar.toFixed(1)}px; expected roughly 24–32px`);
+  }
 
   await page.close();
 }
@@ -484,11 +596,17 @@ const captureList = [
   ['contact-desktop', 'contact', 1440, 1100],
   ['about-desktop', 'about', 1440, 1100],
   ['home-tablet', 'index', 820, 1180],
+  ['home2-tablet', 'home2', 768, 1180],
   ['products-tablet', 'products', 820, 1180],
+  ['consultation-tablet', 'consultation', 768, 1180],
+  ['certifications-tablet', 'certifications', 768, 1180],
+  ['contact-tablet', 'contact', 768, 1180],
   ['home-mobile', 'index', 390, 844],
+  ['home2-mobile', 'home2', 390, 844],
   ['products-mobile', 'products', 390, 844],
   ['ingredients-mobile', 'ingredients', 390, 844],
   ['consultation-mobile', 'consultation', 390, 844],
+  ['certifications-mobile', 'certifications', 390, 844],
   ['contact-mobile', 'contact', 390, 844]
 ];
 

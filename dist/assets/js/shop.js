@@ -129,6 +129,7 @@
       const items = ids.length
         ? ids.map(id => products.find(p => p.id === id)).filter(Boolean)
         : products.slice(0, 4);
+      target.dataset.itemCount = String(items.length);
       target.innerHTML = items.map(productCard).join('');
     });
   }

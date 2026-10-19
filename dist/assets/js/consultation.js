@@ -64,7 +64,7 @@
           <div class="review-card">
             <div class="review-card__header">
               <span class="status-badge status-badge--pending">Status: Request Awaiting Provider Confirmation</span>
-              <p class="review-notice">Your preferences will be checked against verified practitioner availability. No appointment is locked until verified.</p>
+              <p class="review-notice">Your preferences are ready for a configured provider workflow. No appointment exists until availability and credentials are confirmed.</p>
             </div>
             <dl class="review-details">
               <div><dt>Consultation Format</dt><dd>${mode}</dd></div>
@@ -122,7 +122,7 @@
             <p><strong>Current Status:</strong> <span class="status-awaiting">Pending Clinic Verification</span></p>
           </div>
           <p class="complete-disclaimer">
-            This booking request was processed locally. A healthcare coordinator will contact you via email or phone within 1 business day to confirm doctor credentials, agree upon an exact time slot, and furnish clinical onboarding details. No payment has been taken.
+            This booking request was processed locally and has not been transmitted. Connect a secure intake service and verified provider workflow before production use. No appointment has been confirmed and no payment has been taken.
           </p>
           <div class="complete-actions">
             <a class="button" href="products.html">Browse the Apothecary</a>

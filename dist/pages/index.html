@@ -28,7 +28,7 @@
         </div>
         <ul class="micro-proof">
           <li>Transparent ingredient lists</li>
-          <li>Verified botanical sourcing</li>
+          <li>Clear sourcing fields</li>
           <li>Grounded daily directions</li>
           <li>No miracle claims</li>
         </ul>
@@ -219,17 +219,19 @@
     <!-- 8. Quality & Certifications Preview (Customer-Facing Verification) -->
     <section class="section section--wash">
       <div class="container">
-        <div class="cert-preview-card" data-reveal>
-          <div>
+        <div class="cert-preview-card quality-strip" data-reveal>
+          <div class="quality-strip__intro">
             <p class="eyebrow">Integrity & Transparency</p>
             <h2>Evidence before emblem.</h2>
-            <p class="lead">At VanaVeda, product claims are tied directly to verifiable batch documentation, botanical identity records, and facility compliance standards.</p>
-            <p>We believe customers deserve real documentation rather than cosmetic trust badges. Review our complete document transparency register and claim verification framework.</p>
-            <div style="margin-top:24px;">
-              <a class="button" href="certifications.html">Visit Certifications & Quality page</a>
-            </div>
+            <p>Our quality framework shows what evidence to request and clearly marks records that are not yet publicly available.</p>
+            <a class="button button--small" href="certifications.html">Review quality standards</a>
           </div>
-          <img src="../assets/images/lab-quality.jpg" alt="Botanical quality verification and laboratory inspection desk">
+          <div class="quality-strip__checks" aria-label="Quality verification themes">
+            <article><span>01</span><strong>Ingredient Identity</strong><p>Botanical name, plant part, and supplier records.</p></article>
+            <article><span>02</span><strong>Product Documentation</strong><p>Batch-specific records requested through the care desk.</p></article>
+            <article><span>03</span><strong>Quality Verification</strong><p>Status language that distinguishes targets from evidence.</p></article>
+          </div>
+          <img class="quality-strip__media" src="../assets/images/lab-quality.jpg" alt="Botanical quality records being reviewed at a laboratory desk">
         </div>
       </div>
     </section>
@@ -237,29 +239,18 @@
     <!-- 9. Doctor Consultation Booking Preview -->
     <section class="section">
       <div class="container">
-        <div class="consult-preview" data-reveal>
-          <div>
+        <div class="consult-preview consult-preview--immersive" data-reveal>
+          <img class="consult-preview__media" src="../assets/images/doctor-desk.jpg" alt="A calm desk prepared for a consultation request">
+          <div class="consult-preview__copy">
             <p class="eyebrow" style="color:var(--rose);">Clinical Guidance</p>
-            <h2>Book an Ayurvedic Doctor Consultation.</h2>
-            <p>Looking for personalized wellness recommendations? Connect directly with licensed Ayurvedic practitioners for structured, one-on-one health and ritual guidance.</p>
-            <div class="consult-features">
-              <div class="consult-feature-item">
-                <svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"></path></svg>
-                <span>Comprehensive Prakriti (Constitutional) & Dosha Evaluation</span>
-              </div>
-              <div class="consult-feature-item">
-                <svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"></path></svg>
-                <span>Personalized Daily Ritual (Dinacharya) & Herbal Regimens</span>
-              </div>
-              <div class="consult-feature-item">
-                <svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"></path></svg>
-                <span>Online Video Appointments or Partner Dispensary Visits</span>
-              </div>
-            </div>
-            <a class="button button--light" href="consultation.html">Book consultation appointment</a>
+            <h2>Begin with a consultation request.</h2>
+            <p>Share your preferred format, timing, and wellness focus. Provider availability and credentials are confirmed before any appointment is established.</p>
+            <a class="button button--light" href="consultation.html">Start the request</a>
           </div>
-          <div>
-            <img class="support-media" src="../assets/images/doctor-desk.jpg" alt="A calm, clinical consultation desk with Ayurvedic pharmacopeia references">
+          <div class="consult-request-path" aria-label="Consultation request process">
+            <span><b>01</b> Share preferences</span>
+            <span><b>02</b> Availability review</span>
+            <span><b>03</b> Receive confirmation</span>
           </div>
         </div>
       </div>

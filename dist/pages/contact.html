@@ -32,42 +32,23 @@
       </div>
     </section>
 
-    <!-- 2. Main Contact Layout -->
-    <div class="container contact-layout">
-      <!-- Left Column: Store Location & Pathways -->
-      <aside class="contact-aside" data-reveal>
-        <div class="contact-card">
-          <p class="eyebrow">Direct Pathways</p>
-          <h2>Choose your journey.</h2>
-          <p>For one-on-one health evaluations, request a consultation with an Ayurvedic physician. For stockists and boutiques, complete our dedicated wholesale application.</p>
-          <div style="display:flex;flex-direction:column;gap:10px;margin-top:20px;">
-            <a class="button button--light button--small" href="consultation.html">Book Doctor Consultation</a>
-            <a class="button button--outline button--small" style="color:#fff;border-color:rgba(255,255,255,.5);" href="products.html">Browse Product Catalog</a>
+    <!-- 2. Contact and Enquiry -->
+    <section class="contact-enquiry-section">
+      <div class="container contact-layout">
+        <aside class="contact-aside" data-reveal>
+          <div class="contact-card">
+            <p class="eyebrow">Direct Pathways</p>
+            <h2>Choose the right route.</h2>
+            <p>Use the enquiry form for product, order, documentation, or wholesale questions. Consultation requests follow a separate structured flow.</p>
+            <div class="contact-card__actions">
+              <a class="button button--light button--small" href="consultation.html">Request a Consultation</a>
+              <a class="button button--outline button--small" href="products.html">Browse Products</a>
+            </div>
+            <p class="contact-card__note">This frontend validates and prepares requests locally. Connect an authenticated inbox or CRM before production use.</p>
           </div>
-        </div>
+        </aside>
 
-        <!-- Store Location Module -->
-        <div class="store-location-card">
-          <span class="eyebrow">Apothecary Location</span>
-          <h3>Flagship Store & Dispensary</h3>
-          <p style="font-size:.9rem;color:var(--muted);margin-top:6px;">Our primary retail counter and sensory tea bar are currently accessible through accredited partner centers and scheduled appointments.</p>
-          
-          <div class="location-notice-box">
-            <strong>Location Status:</strong>
-            <p style="margin:4px 0 0;font-size:.82rem;">Permanent standalone flagship address and geographic coordinates will be announced following verified regional dispensary licensing. Appointments are scheduled via care confirmation.</p>
-          </div>
-
-          <p class="store-hours-title">Dispensary Hours (IST)</p>
-          <ul class="hours-list">
-            <li><span>Monday – Friday</span> <strong>09:30 – 18:30</strong></li>
-            <li><span>Saturday</span> <strong>10:00 – 17:00</strong></li>
-            <li><span>Sunday</span> <strong>Closed for Botanical Rest</strong></li>
-          </ul>
-        </div>
-      </aside>
-
-      <!-- Right Column: Interactive Mode Switcher + Forms -->
-      <div class="contact-forms-container" data-reveal>
+        <div class="contact-forms-container" data-reveal>
         <!-- Mode Tabs -->
         <div class="contact-mode-tabs" role="tablist" aria-label="Contact mode">
           <button class="contact-mode-btn is-active" data-contact-mode-btn="general" role="tab" aria-selected="true" aria-controls="general-form-panel">
@@ -192,10 +173,30 @@
           <button class="button" type="submit">Submit Wholesale Trade Application</button>
           <p class="form-status" data-form-status aria-live="polite"></p>
         </form>
+        </div>
       </div>
-    </div>
+    </section>
 
-    <!-- 3. Contact FAQ -->
+    <!-- 3. Store Location -->
+    <section class="section section--surface location-section">
+      <div class="container">
+        <div class="store-location-card" data-reveal>
+          <div class="store-location-card__intro">
+            <p class="eyebrow">Store Location</p>
+            <h2>Visit details are pending confirmation.</h2>
+            <p>No verified retail address, opening hours, or partner-location information has been supplied. This section is ready for confirmed client details when available.</p>
+          </div>
+          <div class="location-status-card">
+            <span class="status-badge status-badge--pending">Client details required</span>
+            <h3>Need product or order assistance?</h3>
+            <p>Use the general enquiry form above and select the most relevant subject. Please do not send emergency or sensitive medical information.</p>
+            <a class="text-link" href="#general-form-panel">Return to enquiry form →</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. Contact FAQ -->
     <section class="section section--wash">
       <div class="container">
         <div class="section-head" data-reveal>
@@ -208,15 +209,15 @@
         <div class="faq-list" data-reveal>
           <details>
             <summary>What is the typical response turnaround for inquiries?</summary>
-            <p>Our care team replies to general queries and documentation requests within 1–2 business days. Wholesale trade applications are reviewed by our partnerships desk within 3 business days.</p>
+            <p>A response timeframe has not yet been published. Submit the relevant form so the connected care workflow can acknowledge and route the request once configured.</p>
           </details>
           <details>
             <summary>What are the wholesale minimum order quantities (MOQ)?</summary>
-            <p>Our opening boutique starter package begins at 25 mixed units across our tea, hair care, and therapeutic oil lines. Ongoing replenishment orders can be mixed across collections to suit seasonal retail demand.</p>
+            <p>Wholesale quantities and commercial terms require client confirmation. Use the wholesale form to share your expected volume and product interests without assuming a published minimum.</p>
           </details>
           <details>
-            <summary>Can I schedule an in-person dispensary walkthrough?</summary>
-            <p>In-person visits to partner dispensary counters require appointment verification to ensure an Ayurvedic practitioner or care advisor is available to guide your consultation.</p>
+            <summary>Can I schedule an in-person store visit?</summary>
+            <p>No verified store address or public visiting schedule is currently available. Confirmed location information can be published here when the client supplies it.</p>
           </details>
           <details>
             <summary>How can I request certificates of analysis (COAs) for specific batches?</summary>

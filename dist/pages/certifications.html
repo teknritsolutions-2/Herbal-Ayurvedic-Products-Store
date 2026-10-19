@@ -36,7 +36,7 @@
           <div>
             <p class="eyebrow">Verification Principles</p>
             <h2>How we evaluate product claims.</h2>
-            <p>Every claim published across our apothecary corresponds to verified primary documentation.</p>
+            <p>The framework below separates evidence requirements from records that have actually been supplied.</p>
           </div>
         </div>
 
@@ -44,7 +44,7 @@
           <article class="evidence-card">
             <span class="number">01</span>
             <h3>Audited Scope & Issuer</h3>
-            <p>A legitimate certification must name the exact licensed manufacturing facility, legal entity, and product category covered. VanaVeda verifies institutional accreditation before adopting language.</p>
+            <p>A legitimate certification should name the manufacturing facility, legal entity, issuing body, and exact product category covered.</p>
           </article>
           <article class="evidence-card">
             <span class="number">02</span>
@@ -54,7 +54,7 @@
           <article class="evidence-card">
             <span class="number">03</span>
             <h3>Claim Alignment</h3>
-            <p>Traditional herbal knowledge is distinguished clearly from clinical laboratory validation. We publish verified specifications without extrapolating unsupported medical claims.</p>
+            <p>Traditional herbal context should be distinguished from laboratory validation, and specifications published only when supporting evidence is available.</p>
           </article>
         </div>
       </div>
@@ -63,15 +63,15 @@
     <!-- 3. Quality & Traceability Information -->
     <section class="section section--surface">
       <div class="container">
-        <div class="cert-preview-card" data-reveal>
-          <div>
+        <div class="cert-preview-card quality-evidence" data-reveal>
+          <div class="quality-evidence__copy">
             <p class="eyebrow">Laboratory Integrity</p>
             <h2>What customers should look for.</h2>
             <p class="lead">When inspecting herbal products, discerning consumers prioritize verifiable proof over promotional rhetoric:</p>
-            <ul style="color:var(--muted);margin:18px 0;padding-left:20px;display:grid;gap:10px;font-size:.95rem;">
-              <li><strong>Certificates of Analysis (COA):</strong> Independent third-party assays confirming botanical identity, moisture content, and absence of microbiological contaminants.</li>
-              <li><strong>Heavy Metal Screenings:</strong> Rigorous inductively coupled plasma (ICP-MS) tests screening for lead, mercury, cadmium, and arsenic levels below pharmacopeial thresholds.</li>
-              <li><strong>Pesticide Residue Panels:</strong> Multi-residue screening verifying that wild-harvested and farm-cultivated botanicals are free of agrochemical residues.</li>
+            <ul class="quality-evidence__list">
+              <li><strong>Certificate of Analysis:</strong> Match the batch number, issue date, laboratory, and tested specification.</li>
+              <li><strong>Contaminant screening:</strong> Check which metals, microbes, or residues were tested and the limits applied.</li>
+              <li><strong>Identity records:</strong> Confirm botanical name, plant part, origin, and the method used to identify it.</li>
             </ul>
             <a class="button button--small" href="contact.html?type=Document%20request">Request Batch COA</a>
           </div>
@@ -86,19 +86,17 @@
         <div class="section-head" data-reveal>
           <div>
             <p class="eyebrow">Transparency Register</p>
-            <h2>Verified standards & documentation.</h2>
-            <p>VanaVeda maintains a strict policy of publishing third-party certificates only upon full document review.</p>
+            <h2>Standards & documentation framework.</h2>
+            <p>Third-party certificates should be published only after their scope, issuer, dates, and product relevance have been reviewed.</p>
           </div>
         </div>
 
-        <div class="status-panel" data-reveal style="margin-bottom:30px;">
-          <div>
-            <h3 style="font-size:1.6rem;margin-bottom:8px;">Public Registry Status</h3>
-            <p style="margin:0;">Certificates are linked directly to active production lots. As partner laboratory assays and seasonal audits conclude, corresponding source files are uploaded for open review.</p>
+        <div class="status-panel registry-toolbar" data-reveal>
+          <div class="registry-toolbar__copy">
+            <h3>Public Registry Status</h3>
+            <p>No client-supplied certificates are currently published in this demonstration storefront.</p>
           </div>
-          <div style="display:flex;gap:12px;align-items:center;">
-            <span class="status-badge status-badge--pending" style="font-size:.84rem;">Document Verification in Progress</span>
-          </div>
+          <a class="status-badge status-badge--pending" href="contact.html?type=Document%20request">Documentation not yet supplied</a>
         </div>
 
         <div style="border:1px solid var(--line);border-radius:20px;overflow:hidden;background:var(--surface);" data-reveal>
@@ -107,8 +105,8 @@
               <tr>
                 <th>Standard / Domain</th>
                 <th>Verification Scope</th>
-                <th>Target Requirement</th>
-                <th>Status / Verification Pathway</th>
+                <th>Evidence to Review</th>
+                <th>Current Public Status</th>
               </tr>
             </thead>
             <tbody>
@@ -116,28 +114,39 @@
                 <td><strong>Good Manufacturing Practices</strong></td>
                 <td>Processing & Packaging Facilities</td>
                 <td>Sanitary controls, air handling, clean batch separation</td>
-                <td><span class="status-awaiting">Audit Schedule Pending</span></td>
+                <td><span class="status-awaiting">Client evidence not supplied</span></td>
               </tr>
               <tr>
                 <td><strong>Heavy Metal & Microbial Testing</strong></td>
                 <td>Batch-level Finished Goods</td>
                 <td>ICP-MS screening for lead, arsenic, mercury, and cadmium</td>
-                <td><span class="status-awaiting">Available by Batch Request</span></td>
+                <td><span class="status-awaiting">Availability unconfirmed</span></td>
               </tr>
               <tr>
                 <td><strong>Organic Botanical Sourcing</strong></td>
                 <td>Herbal Agriculture & Wild Collection</td>
                 <td>Non-GMO verification, zero chemical synthetic pesticides</td>
-                <td><span class="status-awaiting">Cooperative Audit Pending</span></td>
+                <td><span class="status-awaiting">Client evidence not supplied</span></td>
               </tr>
               <tr>
-                <td><strong>Cruelty-Free & Ethical Ethics</strong></td>
+                <td><strong>Cruelty-Free & Ethical Sourcing</strong></td>
                 <td>All Topical & Cosmetic Formulas</td>
                 <td>Zero animal testing at ingredient and finished product stages</td>
-                <td><span class="status-awaiting">Supplier Declaration on File</span></td>
+                <td><span class="status-awaiting">Client evidence not supplied</span></td>
               </tr>
             </tbody>
           </table>
+        </div>
+
+        <div class="cert-faq" data-reveal>
+          <details>
+            <summary>Does “not supplied” mean a standard has failed?</summary>
+            <p>No. It means this public template does not contain client evidence that supports a verified status.</p>
+          </details>
+          <details>
+            <summary>What should a product-specific document request include?</summary>
+            <p>Include the product name and batch or lot number, if available, so the request can be matched to the correct record.</p>
+          </details>
         </div>
       </div>
     </section>
@@ -149,7 +158,7 @@
           <div>
             <p class="eyebrow">Document Requests</p>
             <h2>Need verification for a specific lot?</h2>
-            <p class="lead">Healthcare practitioners, retail partners, and discerning patrons may request raw batch test data and ingredient provenance dossiers directly through our care desk.</p>
+            <p class="lead">Customers and professional partners can use the care form to ask whether batch records or ingredient provenance documents are available.</p>
             <div style="margin-top:24px;">
               <a class="button" href="contact.html?type=Document%20request">Submit Documentation Request</a>
               <a class="button button--outline adjacent-button" href="products.html">Return to Shop</a>
