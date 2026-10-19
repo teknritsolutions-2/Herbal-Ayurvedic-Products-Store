@@ -1,19 +1,40 @@
 html[dir="rtl"] .desktop-nav a:after{left:100%;right:0}
+
 html[dir="rtl"] .desktop-nav a:hover:after,html[dir="rtl"] .desktop-nav a[aria-current="page"]:after{left:0}
+
 html[dir="rtl"] .nav-dropdown-trigger:after{left:100%;right:0}
+
 html[dir="rtl"] .nav-dropdown-trigger:hover:after,html[dir="rtl"] .nav-dropdown-trigger.is-active:after{left:0}
+
 html[dir="rtl"] .nav-dropdown-menu{left:auto;right:0}
+
 html[dir="rtl"] .mobile-nav-sub{padding-left:0;padding-right:12px}
+
 html[dir="rtl"] .badge{left:auto;right:14px}
+
 html[dir="rtl"] .hero-scene__leaf{right:auto;left:-2%}
+
 html[dir="rtl"] .hero-scene__card{left:auto;right:-4%}
+
 html[dir="rtl"] .cart-drawer{right:auto;left:0;transform:translateX(-105%)}
+
 html[dir="rtl"] .cart-drawer.is-open{transform:none}
+
 html[dir="rtl"] .mini-remove{right:auto;left:16px}
+
 html[dir="rtl"] .search-close{right:auto;left:24px}
+
 html[dir="rtl"] .filter-panel{text-align:right}
+
 html[dir="rtl"] .document-table th,html[dir="rtl"] .document-table td{text-align:right}
+
 html[dir="rtl"] .review-card{border-left:1px solid var(--line);border-right:4px solid var(--brick)}
+
 html[dir="rtl"] .discovery-tab{text-align:right}
-@media(max-width:980px){html[dir="rtl"] .mobile-panel{transform:translateX(-105%)}html[dir="rtl"] .mobile-panel.is-open{transform:none}html[dir="rtl"] .filter-panel{left:auto;right:0;transform:translateX(105%)}html[dir="rtl"] .filter-panel.is-open{transform:none}}
+
+@media(max-width:980px){html[dir="rtl"] .mobile-panel{transform:translateX(-105%)}
+html[dir="rtl"] .mobile-panel.is-open{transform:none}
+html[dir="rtl"] .filter-panel{left:auto;right:0;transform:translateX(105%)}
+html[dir="rtl"] .filter-panel.is-open{transform:none}
+}
 

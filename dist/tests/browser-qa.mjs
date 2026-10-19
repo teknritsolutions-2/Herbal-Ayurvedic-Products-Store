@@ -57,21 +57,204 @@ const browser = await chromium.launch({
 const problems = [];
 const loadFullPage = async page => {
   await page.evaluate(async () => {
+    document.querySelectorAll('img[loading="lazy"]').forEach(image => { image.loading = 'eager'; });
     for (let y = 0; y < document.documentElement.scrollHeight; y += 700) {
       window.scrollTo(0, y);
-      await new Promise(resolve => setTimeout(resolve, 30));
+      await new Promise(resolve => setTimeout(resolve, 80));
     }
     window.scrollTo(0, 0);
   });
+  await page.waitForFunction(() => [...document.images].every(image => image.complete), null, { timeout: 8000 }).catch(() => {});
 };
+
+const majorPages = ['index', 'home2', 'products', 'ingredients', 'consultation', 'certifications', 'contact', 'about'];
+const stickyPages = ['index', 'products', 'ingredients', 'contact'];
+const stickyWidths = [390, 820, 1440];
+
+async function getContrastAudit(page) {
+  return page.evaluate(() => {
+    const parseColor = value => {
+      const match = value.match(/rgba?\((\d+)[ ,]+(\d+)[ ,]+(\d+)(?:[ ,/]+([\d.]+))?\)/);
+      return match ? [Number(match[1]), Number(match[2]), Number(match[3]), match[4] === undefined ? 1 : Number(match[4])] : null;
+    };
+    const luminance = rgb => {
+      const channel = value => {
+        const n = value / 255;
+        return n <= .03928 ? n / 12.92 : ((n + .055) / 1.055) ** 2.4;
+      };
+      return .2126 * channel(rgb[0]) + .7152 * channel(rgb[1]) + .0722 * channel(rgb[2]);
+    };
+    const ratio = (a, b) => {
+      const l1 = luminance(a);
+      const l2 = luminance(b);
+      return (Math.max(l1, l2) + .05) / (Math.min(l1, l2) + .05);
+    };
+    const effectiveBackground = element => {
+      let current = element;
+      while (current) {
+        const color = parseColor(getComputedStyle(current).backgroundColor);
+        if (color && color[3] >= .96) return color;
+        current = current.parentElement;
+      }
+      return parseColor(getComputedStyle(document.body).backgroundColor);
+    };
+    const selector = 'main h1,main h2,main h3,main p,.eyebrow,.product-card__category,.result-count,.field span,.button,.quick-add,.footer a,.footer p';
+    return [...document.querySelectorAll(selector)].flatMap((element, index) => {
+      const rect = element.getBoundingClientRect();
+      const style = getComputedStyle(element);
+      if (!element.textContent.trim() || rect.width < 1 || rect.height < 1 || style.visibility === 'hidden') return [];
+      if (element.closest('.editorial-hero') || element.closest('.category-card')) return [];
+      const foreground = parseColor(style.color);
+      const background = effectiveBackground(element);
+      if (!foreground || !background) return [];
+      const fontSize = parseFloat(style.fontSize);
+      const fontWeight = Number(style.fontWeight) || 400;
+      const threshold = fontSize >= 24 || (fontSize >= 18.66 && fontWeight >= 700) ? 3 : 4.5;
+      const contrast = ratio(foreground, background);
+      if (contrast + .02 >= threshold) return [];
+      return [{
+        selector: `${element.tagName.toLowerCase()}${element.className ? '.' + String(element.className).trim().replace(/\s+/g, '.') : ''}[${index}]`,
+        text: element.textContent.trim().slice(0, 45),
+        contrast: contrast.toFixed(2),
+        threshold
+      }];
+    });
+  });
+}
+
+console.log('Validating sticky header geometry at desktop, tablet, and mobile widths...');
+for (const width of stickyWidths) {
+  const page = await browser.newPage({ viewport: { width, height: 900 } });
+  for (const name of stickyPages) {
+    await page.goto(`${base}/${name}.html`, { waitUntil: 'domcontentloaded' });
+    const initial = await page.locator('.site-header').boundingBox();
+    const announcementHeight = await page.locator('.announcement').evaluate(element => element.getBoundingClientRect().height);
+    if (!initial || Math.abs(initial.y - announcementHeight) > 2) {
+      problems.push(`Sticky setup error: ${name}.html header should begin below announcement at ${width}px`);
+    }
+    for (const y of [500, 1500]) {
+      await page.evaluate(scrollY => window.scrollTo(0, scrollY), y);
+      await page.waitForTimeout(80);
+      const geometry = await page.evaluate(() => ({
+        headerTop: document.querySelector('.site-header')?.getBoundingClientRect().top,
+        announcementBottom: document.querySelector('.announcement')?.getBoundingClientRect().bottom
+      }));
+      if (geometry.headerTop === undefined || Math.abs(geometry.headerTop) > 1.5) {
+        problems.push(`Sticky error: ${name}.html header top is ${geometry.headerTop} after ${y}px scroll at ${width}px`);
+      }
+      if (geometry.announcementBottom > 1) {
+        problems.push(`Announcement error: ${name}.html announcement remained visible after ${y}px scroll at ${width}px`);
+      }
+    }
+  }
+  await page.close();
+}
+
+console.log('Validating shared horizontal content grid...');
+for (const width of [390, 820, 1440, 1920]) {
+  const page = await browser.newPage({ viewport: { width, height: 900 } });
+  for (const name of majorPages) {
+    await page.goto(`${base}/${name}.html`, { waitUntil: 'domcontentloaded' });
+    const edges = await page.evaluate(() => {
+      const brand = document.querySelector('.site-header .brand')?.getBoundingClientRect().left;
+      const heroCopy = (document.querySelector('.hero__copy') || document.querySelector('.page-hero__inner > :first-child') || document.querySelector('.editorial-hero__copy'))?.getBoundingClientRect().left;
+      const footer = document.querySelector('.footer__main')?.getBoundingClientRect().left;
+      return { brand, heroCopy, footer };
+    });
+    for (const [edgeName, edge] of Object.entries(edges)) {
+      if (edge === undefined || edge === null) continue;
+      if (Math.abs(edge - edges.brand) > 2.5) {
+        problems.push(`Gutter alignment error: ${name}.html ${edgeName}=${edge.toFixed(1)} vs navbar=${edges.brand.toFixed(1)} at ${width}px`);
+      }
+    }
+  }
+  await page.close();
+}
 
 console.log('Running responsive overflow test across 11 breakpoints...');
 for (const width of widths) {
   const page = await browser.newPage({ viewport: { width, height: 1000 } });
-  for (const name of ['index', 'home2', 'products', 'ingredients', 'consultation', 'certifications', 'contact']) {
+  for (const name of majorPages) {
     await page.goto(`${base}/${name}.html`, { waitUntil: 'domcontentloaded' });
     const overflow = await page.evaluate(() => document.documentElement.scrollWidth > document.documentElement.clientWidth + 1);
     if (overflow) problems.push(`Responsive error: ${name}.html overflows horizontally at ${width}px`);
+  }
+  await page.close();
+}
+
+console.log('Checking bounded controls, cards, and critical sibling overlaps...');
+for (const width of widths) {
+  const page = await browser.newPage({ viewport: { width, height: 900 } });
+  for (const name of majorPages) {
+    await page.goto(`${base}/${name}.html`, { waitUntil: 'domcontentloaded' });
+    const layoutIssues = await page.evaluate(() => {
+      const issues = [];
+      const visible = el => {
+        const r = el.getBoundingClientRect();
+        const s = getComputedStyle(el);
+        const closedOverlay = el.closest('.filter-panel:not(.is-open),.mobile-panel:not(.is-open),[inert]');
+        return !closedOverlay && r.width > 1 && r.height > 1 && s.visibility !== 'hidden' && s.display !== 'none';
+      };
+      document.querySelectorAll('.button,.quick-add,input,select,textarea,.product-card,.glossary-card').forEach(el => {
+        if (!visible(el)) return;
+        const r = el.getBoundingClientRect();
+        if (r.left < -1 || r.right > document.documentElement.clientWidth + 1) {
+          issues.push(`${el.tagName.toLowerCase()}.${String(el.className).replace(/\s+/g, '.')} “${el.textContent.trim().slice(0, 40)}” outside viewport (${r.left.toFixed(1)}–${r.right.toFixed(1)} / ${document.documentElement.clientWidth})`);
+        }
+      });
+      document.querySelectorAll('.product-card__bottom,.hero__actions,.form-actions,.discovery-actions,.steps>div>div').forEach(group => {
+        const children = [...group.children].filter(visible);
+        for (let i = 0; i < children.length; i++) {
+          for (let j = i + 1; j < children.length; j++) {
+            const a = children[i].getBoundingClientRect();
+            const b = children[j].getBoundingClientRect();
+            const overlap = Math.min(a.right, b.right) - Math.max(a.left, b.left) > 1 && Math.min(a.bottom, b.bottom) - Math.max(a.top, b.top) > 1;
+            if (overlap) issues.push(`${group.className}: sibling controls overlap`);
+          }
+        }
+      });
+      return [...new Set(issues)];
+    });
+    layoutIssues.forEach(issue => problems.push(`Layout error: ${name}.html at ${width}px — ${issue}`));
+  }
+  await page.close();
+}
+
+console.log('Auditing dark-mode text and interactive contrast...');
+for (const name of majorPages) {
+  const page = await browser.newPage({ viewport: { width: 1440, height: 1000 } });
+  await page.addInitScript(() => localStorage.setItem('vanaveda-theme', 'dark'));
+  await page.goto(`${base}/${name}.html`, { waitUntil: 'domcontentloaded' });
+  await loadFullPage(page);
+  const contrastIssues = await getContrastAudit(page);
+  contrastIssues.slice(0, 12).forEach(issue => {
+    problems.push(`Dark contrast error: ${name}.html ${issue.selector} “${issue.text}” ratio ${issue.contrast} < ${issue.threshold}`);
+  });
+  const hoverTargets = page.locator('.button:visible,.quick-add:visible');
+  const hoverCount = Math.min(await hoverTargets.count(), 8);
+  for (let index = 0; index < hoverCount; index++) {
+    const target = hoverTargets.nth(index);
+    await target.hover();
+    await page.waitForTimeout(260);
+    const hoverResult = await target.evaluate(element => {
+      const parse = value => (value.match(/rgba?\((\d+)[ ,]+(\d+)[ ,]+(\d+)/) || []).slice(1, 4).map(Number);
+      const lum = rgb => rgb.map(v => { const n = v / 255; return n <= .03928 ? n / 12.92 : ((n + .055) / 1.055) ** 2.4; }).reduce((sum, v, i) => sum + v * [.2126, .7152, .0722][i], 0);
+      const style = getComputedStyle(element);
+      const fg = parse(style.color);
+      let node = element;
+      let bg = [];
+      while (node && !bg.length) {
+        const color = getComputedStyle(node).backgroundColor;
+        if (!color.endsWith(', 0)') && color !== 'rgba(0, 0, 0, 0)') bg = parse(color);
+        node = node.parentElement;
+      }
+      if (fg.length !== 3 || bg.length !== 3) return null;
+      const a = lum(fg); const b = lum(bg);
+      return (Math.max(a, b) + .05) / (Math.min(a, b) + .05);
+    });
+    if (hoverResult !== null && hoverResult < 4.5) {
+      problems.push(`Hover contrast error: ${name}.html button ${index + 1} ratio ${hoverResult.toFixed(2)} < 4.5`);
+    }
   }
   await page.close();
 }
@@ -300,9 +483,13 @@ const captureList = [
   ['certifications-desktop', 'certifications', 1440, 1100],
   ['contact-desktop', 'contact', 1440, 1100],
   ['about-desktop', 'about', 1440, 1100],
+  ['home-tablet', 'index', 820, 1180],
+  ['products-tablet', 'products', 820, 1180],
   ['home-mobile', 'index', 390, 844],
   ['products-mobile', 'products', 390, 844],
-  ['consultation-mobile', 'consultation', 390, 844]
+  ['ingredients-mobile', 'ingredients', 390, 844],
+  ['consultation-mobile', 'consultation', 390, 844],
+  ['contact-mobile', 'contact', 390, 844]
 ];
 
 for (const [outName, pageName, w, h] of captureList) {
@@ -314,8 +501,8 @@ for (const [outName, pageName, w, h] of captureList) {
   await page.close();
 }
 
-// Dark mode captures
-for (const pageName of ['index', 'products', 'ingredients', 'consultation']) {
+// Dark mode captures for every major public page
+for (const pageName of majorPages) {
   const page = await browser.newPage({ viewport: { width: 1440, height: 1100 } });
   await page.addInitScript(() => localStorage.setItem('vanaveda-theme', 'dark'));
   await page.goto(`${base}/${pageName}.html`, { waitUntil: 'domcontentloaded' });

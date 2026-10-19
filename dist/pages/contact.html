@@ -16,13 +16,19 @@
   <main id="main">
 
     <!-- 1. Hero -->
-    <section class="page-hero">
+    <section class="page-hero page-hero--contact">
       <div class="container page-hero__inner">
         <div>
           <p class="eyebrow">Connect With Us</p>
           <h1>How can we assist you?</h1>
+          <p class="lead">Choose the path that best matches your enquiry. Store details are published only after verification.</p>
         </div>
-        <p class="lead">Whether you have questions regarding batch testing, retail orders, partner clinical appointments, or trade wholesale partnerships, our team is here to support you.</p>
+        <nav class="page-hero__routes" aria-label="Contact pathways">
+          <a class="page-hero__route" href="#general-form-panel">Customer care</a>
+          <a class="page-hero__route" href="#wholesale">Wholesale</a>
+          <a class="page-hero__route" href="consultation.html">Consultation request</a>
+          <a class="page-hero__route" href="certifications.html">Document requests</a>
+        </nav>
       </div>
     </section>
 
@@ -31,7 +37,7 @@
       <!-- Left Column: Store Location & Pathways -->
       <aside class="contact-aside" data-reveal>
         <div class="contact-card">
-          <p class="eyebrow" style="color:var(--blush);">Direct Pathways</p>
+          <p class="eyebrow">Direct Pathways</p>
           <h2>Choose your journey.</h2>
           <p>For one-on-one health evaluations, request a consultation with an Ayurvedic physician. For stockists and boutiques, complete our dedicated wholesale application.</p>
           <div style="display:flex;flex-direction:column;gap:10px;margin-top:20px;">
@@ -42,7 +48,7 @@
 
         <!-- Store Location Module -->
         <div class="store-location-card">
-          <span class="eyebrow" style="color:var(--brick);">Apothecary Location</span>
+          <span class="eyebrow">Apothecary Location</span>
           <h3>Flagship Store & Dispensary</h3>
           <p style="font-size:.9rem;color:var(--muted);margin-top:6px;">Our primary retail counter and sensory tea bar are currently accessible through accredited partner centers and scheduled appointments.</p>
           
@@ -51,7 +57,7 @@
             <p style="margin:4px 0 0;font-size:.82rem;">Permanent standalone flagship address and geographic coordinates will be announced following verified regional dispensary licensing. Appointments are scheduled via care confirmation.</p>
           </div>
 
-          <p style="font-size:.84rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--brick);margin-top:20px;">Dispensary Hours (IST)</p>
+          <p class="store-hours-title">Dispensary Hours (IST)</p>
           <ul class="hours-list">
             <li><span>Monday – Friday</span> <strong>09:30 – 18:30</strong></li>
             <li><span>Saturday</span> <strong>10:00 – 17:00</strong></li>
@@ -113,9 +119,9 @@
 
         <!-- Form 2: Dedicated Wholesale Enquiry -->
         <form class="contact-form" data-local-form data-wholesale-form id="wholesale-form-panel" hidden>
-          <div style="background:var(--wash);padding:18px 22px;border-radius:16px;border:1px solid var(--rose);margin-bottom:12px;">
-            <strong style="color:var(--brick);font-size:.92rem;">B2B Wholesale & Stockist Application</strong>
-            <p style="font-size:.85rem;color:var(--muted);margin:4px 0 0;">We partner with curated apothecaries, wellness resorts, organic boutiques, yoga shalas, and Ayurvedic dispensaries.</p>
+          <div class="wholesale-intro">
+            <strong>B2B Wholesale & Stockist Application</strong>
+            <p>We partner with curated apothecaries, wellness resorts, organic boutiques, yoga shalas, and Ayurvedic dispensaries.</p>
           </div>
 
           <div class="field-grid">

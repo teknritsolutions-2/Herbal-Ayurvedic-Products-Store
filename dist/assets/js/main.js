@@ -25,7 +25,7 @@
 
     const header = document.querySelector('[data-site-header]');
     if (header) {
-      header.innerHTML = `
+      const headerMarkup = `
         <a class="skip-link" href="#main">Skip to content</a>
         <div class="announcement">Thoughtful botanical goods · Earthy wellness & conscious Ayurvedic rituals</div>
         <header class="site-header">
@@ -80,6 +80,8 @@
             <button class="button button--outline button--small button--full" data-dir-toggle>Direction: <span data-dir-label>RTL</span></button>
           </div>
         </div>`;
+      header.insertAdjacentHTML('beforebegin', headerMarkup);
+      header.remove();
     }
 
     const footer = document.querySelector('[data-site-footer]');

@@ -1,32 +1,141 @@
-html[data-theme="dark"]{--canvas:#211B19;--surface:#302621;--sand:#40312B;--line:#57453D;--ink:#F8F0E7;--muted:#D6C6B8;--shadow:0 18px 55px rgba(0,0,0,.28);color-scheme:dark}
+html[data-theme="dark"] {
+  --canvas:#171719;
+  --surface:#222326;
+  --surface-elevated:#2B2B2F;
+  --sand:#343236;
+  --wash:#202124;
+  --line:#454146;
+  --ink:#F7F2EC;
+  --muted:#CFC7C0;
+  --dark:#111113;
+  --accent-text:#F0A08A;
+  --accent-fill:#A64B35;
+  --accent-hover:#7E3525;
+  --on-accent:#FFFFFF;
+  --focus-ring:#F0A08A;
+  --rose:#E49A84;
+  --blush:#EBC5B5;
+  --shadow:0 18px 55px rgba(0,0,0,.36);
+  color-scheme:dark;
+}
+
 html[data-theme="dark"] .brand-light{display:none}
 html[data-theme="dark"] .brand-dark{display:block}
 html[data-theme="dark"] .footer-brand .brand-light{display:block}
 html[data-theme="dark"] .footer-brand .brand-dark{display:none}
-html[data-theme="dark"] .hero-scene__card{background:rgba(48,38,33,.9)}
-html[data-theme="dark"] .hero-scene__leaf{border-color:var(--canvas)}
-html[data-theme="dark"] .micro-proof li{background:var(--surface)}
-html[data-theme="dark"] input,html[data-theme="dark"] select,html[data-theme="dark"] textarea{color-scheme:dark;background:var(--canvas);color:var(--ink)}
-html[data-theme="dark"] .badge{color:#211B19;background:#FFFDF9}
-html[data-theme="dark"] .badge--hair{color:#FFF;background:var(--rose)}
-html[data-theme="dark"] .button--light{color:#211B19;background:#FFFDF9}
-html[data-theme="dark"] .quick-add:hover{background:var(--clay)}
-html[data-theme="dark"] .nav-dropdown-menu{background:var(--surface);border-color:var(--line)}
-html[data-theme="dark"] .nav-dropdown-menu a{color:var(--ink)}
-html[data-theme="dark"] .nav-dropdown-menu a:hover,html[data-theme="dark"] .nav-dropdown-menu a[aria-current="page"]{background:var(--sand);color:var(--rose)}
-html[data-theme="dark"] .discovery-tab{background:var(--surface);border-color:var(--line);color:var(--ink)}
-html[data-theme="dark"] .discovery-tab:hover,html[data-theme="dark"] .discovery-tab.is-active{background:var(--sand);color:var(--rose);border-color:var(--rose)}
-html[data-theme="dark"] .discovery-content{background:var(--surface);border-color:var(--line)}
-html[data-theme="dark"] .cert-preview-card{background:var(--surface);border-color:var(--line)}
-html[data-theme="dark"] .consult-option-card{background:var(--surface);border-color:var(--line)}
-html[data-theme="dark"] .practitioner-notice{background:var(--surface);border-color:var(--line)}
-html[data-theme="dark"] .review-card{background:var(--canvas);border-color:var(--line);border-left-color:var(--rose)}
-html[data-theme="dark"] .status-badge--pending{background:var(--sand);color:var(--rose);border-color:var(--line)}
-html[data-theme="dark"] .booking-receipt{background:var(--surface);border-color:var(--rose)}
-html[data-theme="dark"] .contact-mode-btn{background:var(--surface);border-color:var(--line);color:var(--ink)}
-html[data-theme="dark"] .contact-mode-btn.is-active{background:var(--clay);color:#fff;border-color:var(--clay)}
-html[data-theme="dark"] .store-location-card{background:var(--surface);border-color:var(--line)}
-html[data-theme="dark"] .location-notice-box{background:var(--sand);color:var(--ink);border-color:var(--line)}
-html[data-theme="dark"] .ingredient-filter-strip{background:var(--surface);border-color:var(--line)}
-html[data-theme="dark"] .ingredient-filter-pill{background:var(--canvas);border-color:var(--line);color:var(--ink)}
 
+html[data-theme="dark"] .site-header{background:color-mix(in srgb,var(--canvas) 96%,transparent)}
+html[data-theme="dark"] .section--surface{background:var(--surface)}
+html[data-theme="dark"] .section--wash,
+html[data-theme="dark"] .page-hero--ingredients,
+html[data-theme="dark"] .page-hero--contact{background:var(--wash)}
+html[data-theme="dark"] .hair-showcase{background:linear-gradient(180deg,var(--canvas),var(--wash) 45%,var(--canvas))}
+
+html[data-theme="dark"] h1,
+html[data-theme="dark"] h2,
+html[data-theme="dark"] h3,
+html[data-theme="dark"] h4{color:var(--ink)}
+html[data-theme="dark"] p,
+html[data-theme="dark"] .result-count,
+html[data-theme="dark"] .review-notice,
+html[data-theme="dark"] .complete-disclaimer{color:var(--muted)}
+html[data-theme="dark"] .eyebrow,
+html[data-theme="dark"] .product-card__category,
+html[data-theme="dark"] .glossary-card span,
+html[data-theme="dark"] .review-details dt,
+html[data-theme="dark"] .ingredient-filter-strip span,
+html[data-theme="dark"] .text-link,
+html[data-theme="dark"] .text-button{color:var(--accent-text)}
+
+html[data-theme="dark"] .hero__copy h1 span{color:var(--accent-text)}
+html[data-theme="dark"] .hero-scene__card{background:rgba(43,43,47,.94);border-color:var(--line)}
+html[data-theme="dark"] .hero-scene__leaf{border-color:var(--canvas)}
+html[data-theme="dark"] .micro-proof li{background:var(--surface);color:var(--muted)}
+
+html[data-theme="dark"] .button--outline{background:transparent;border-color:var(--accent-text);color:var(--accent-text)}
+html[data-theme="dark"] .button--outline:hover{background:var(--accent-fill);border-color:var(--accent-fill);color:var(--on-accent)}
+html[data-theme="dark"] .button--light{background:#F7F2EC;border-color:#F7F2EC;color:#572418}
+html[data-theme="dark"] .button--light:hover{background:#DED5CE;border-color:#DED5CE;color:#3D1911}
+html[data-theme="dark"] .button:disabled,
+html[data-theme="dark"] .button[aria-disabled="true"]{background:var(--sand);border-color:var(--line);color:#AAA2A0}
+
+html[data-theme="dark"] .product-card,
+html[data-theme="dark"] .glossary-card,
+html[data-theme="dark"] .forms-card,
+html[data-theme="dark"] .evidence-card,
+html[data-theme="dark"] .consult-option-card,
+html[data-theme="dark"] .practitioner-notice,
+html[data-theme="dark"] .cert-preview-card,
+html[data-theme="dark"] .discovery-content,
+html[data-theme="dark"] .store-location-card,
+html[data-theme="dark"] .status-panel,
+html[data-theme="dark"] .order-summary,
+html[data-theme="dark"] .consult-form{background:var(--surface);border-color:var(--line)}
+html[data-theme="dark"] .product-card__image{background:var(--surface-elevated)}
+html[data-theme="dark"] .badge{color:#3B1B14;background:#FFF4ED}
+html[data-theme="dark"] .badge--hair{color:#FFF;background:var(--accent-fill)}
+html[data-theme="dark"] .quick-add{background:transparent;border-color:var(--accent-text);color:var(--accent-text)}
+html[data-theme="dark"] .quick-add:hover{background:var(--accent-fill);border-color:var(--accent-fill);color:#FFF}
+
+html[data-theme="dark"] input,
+html[data-theme="dark"] select,
+html[data-theme="dark"] textarea{color-scheme:dark;background:var(--surface-elevated);border-color:var(--line);color:var(--ink)}
+html[data-theme="dark"] input::placeholder,
+html[data-theme="dark"] textarea::placeholder{color:#AAA2A0}
+html[data-theme="dark"] input:disabled,
+html[data-theme="dark"] select:disabled,
+html[data-theme="dark"] textarea:disabled{background:var(--sand);color:#AAA2A0}
+html[data-theme="dark"] .search-control,
+html[data-theme="dark"] .ingredient-filter-strip{background:var(--surface);border-color:var(--line)}
+
+html[data-theme="dark"] .nav-dropdown-menu{background:var(--surface-elevated);border-color:var(--line)}
+html[data-theme="dark"] .nav-dropdown-menu a{color:var(--ink)}
+html[data-theme="dark"] .nav-dropdown-menu a:hover,
+html[data-theme="dark"] .nav-dropdown-menu a[aria-current="page"]{background:var(--sand);color:var(--accent-text)}
+
+html[data-theme="dark"] .discovery-tab,
+html[data-theme="dark"] .contact-mode-btn,
+html[data-theme="dark"] .ingredient-filter-pill,
+html[data-theme="dark"] .page-hero__route,
+html[data-theme="dark"] .catalog-categories a{background:var(--surface);border-color:var(--line);color:var(--ink)}
+html[data-theme="dark"] .discovery-tab:hover,
+html[data-theme="dark"] .discovery-tab.is-active,
+html[data-theme="dark"] .contact-mode-btn:hover,
+html[data-theme="dark"] .contact-mode-btn.is-active{background:var(--accent-fill);border-color:var(--accent-fill);color:#FFF}
+html[data-theme="dark"] .discovery-tab.is-active span{color:#FFE0D5}
+
+html[data-theme="dark"] .review-card{background:var(--surface-elevated);border-color:var(--line);border-left-color:var(--accent-text)}
+html[data-theme="dark"] .status-badge--pending,
+html[data-theme="dark"] .status-awaiting{background:var(--sand);color:var(--accent-text);border-color:var(--line)}
+html[data-theme="dark"] .booking-receipt{background:var(--surface);border-color:var(--accent-text)}
+html[data-theme="dark"] .location-notice-box{background:var(--sand);color:var(--ink);border-color:var(--line)}
+
+html[data-theme="dark"] .consult-preview,
+html[data-theme="dark"] .consult-banner,
+html[data-theme="dark"] .ritual-story__copy,
+html[data-theme="dark"] .contact-card,
+html[data-theme="dark"] .spotlight{color:#FFF}
+html[data-theme="dark"] .consult-preview h2,
+html[data-theme="dark"] .consult-banner h2,
+html[data-theme="dark"] .ritual-story__copy h2,
+html[data-theme="dark"] .ritual-story__copy h3,
+html[data-theme="dark"] .contact-card h2,
+html[data-theme="dark"] .spotlight h2{color:#FFF}
+html[data-theme="dark"] .consult-preview p,
+html[data-theme="dark"] .consult-banner p,
+html[data-theme="dark"] .ritual-story__copy p,
+html[data-theme="dark"] .contact-card p{color:#E2D9D3}
+html[data-theme="dark"] .ritual-story__copy p,
+html[data-theme="dark"] .ritual-story__copy .eyebrow,
+html[data-theme="dark"] .contact-card p,
+html[data-theme="dark"] .contact-card .eyebrow,
+html[data-theme="dark"] .spotlight p,
+html[data-theme="dark"] .spotlight .eyebrow,
+html[data-theme="dark"] .spotlight .latin,
+html[data-theme="dark"] .spotlight .spotlight-products__title{color:#FFF}
+
+html[data-theme="dark"] .footer{background:#111113}
+html[data-theme="dark"] .footer p{color:#CFC7C0}
+html[data-theme="dark"] .footer a:not(.footer-brand){color:#E5DDD7}
+html[data-theme="dark"] .footer a:hover{color:#FFF}
+html[data-theme="dark"] .newsletter input{background:#222326;border-color:#454146;color:#F7F2EC}
