@@ -26,6 +26,9 @@
 ## 📁 Project Structure
 
 ```text
+├── .github/
+│   └── workflows/
+│       └── deploy.yml        # GitHub Actions workflow for automated Pages deployment
 ├── dist/                     # Client template package
 │   ├── assets/
 │   │   ├── brand/            # Vector logos
