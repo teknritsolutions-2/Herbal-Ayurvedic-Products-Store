@@ -36,8 +36,8 @@
         <div class="announcement">Thoughtful botanical goods · Earthy wellness & conscious Ayurvedic rituals</div>
         <header class="site-header">
           <a class="brand" href="${homeHref}" aria-label="VanaVeda home">
-            <img class="brand-light" src="${assetRoot}brand/logo-dark.svg" alt="VanaVeda">
-            <img class="brand-dark" src="${assetRoot}brand/logo-light.svg" alt="VanaVeda">
+            <img class="brand-light" src="${assetRoot}brand/logo-dark.svg?v=3" alt="VanaVeda">
+            <img class="brand-dark" src="${assetRoot}brand/logo-light.svg?v=3" alt="VanaVeda">
           </a>
           <nav class="desktop-nav" aria-label="Primary">
             <div class="nav-dropdown" data-nav-dropdown>
@@ -97,8 +97,8 @@
           <div class="footer__main">
             <div>
               <a class="footer-brand" href="${homeHref}" aria-label="VanaVeda home">
-                <img class="brand-light" src="${assetRoot}brand/logo-light.svg" alt="VanaVeda">
-                <img class="brand-dark" src="${assetRoot}brand/logo-dark.svg" alt="VanaVeda">
+                <img class="brand-light" src="${assetRoot}brand/logo-light.svg?v=3" alt="VanaVeda">
+                <img class="brand-dark" src="${assetRoot}brand/logo-dark.svg?v=3" alt="VanaVeda">
               </a>
               <p>Botanical goods for considered daily rituals. Clear ingredients, practical directions, no miracle language.</p>
               <div class="footer-socials" aria-label="Official Social Platforms">

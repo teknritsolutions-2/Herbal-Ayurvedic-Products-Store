@@ -8,18 +8,18 @@ html[data-theme="dark"] {
   --ink:#F7F2EC;
   --muted:#CFC7C0;
   --dark:#111113;
-  --accent-text:#F0A08A;
+  --accent-text:#D76E58;
   --accent-fill:#A64B35;
-  --accent-hover:#7E3525;
+  --accent-hover:#8B3929;
   --on-accent:#FFFFFF;
-  --focus-ring:#F0A08A;
-  --rose:#E49A84;
+  --focus-ring:#D76E58;
+  --rose:#D76E58;
   --blush:#EBC5B5;
   --cream:#F7F2EC;
-  --terracotta:#F0A08A;
-  --brick:#A64B35;
-  --clay:#F0A08A;
-  --clay-deep:#7E3525;
+  --terracotta:#A64B35;
+  --brick:#8B3929;
+  --clay:#A64B35;
+  --clay-deep:#713525;
   --shadow:0 18px 55px rgba(0,0,0,.36);
   color-scheme:dark;
 }
@@ -110,7 +110,7 @@ html[data-theme="dark"] .discovery-tab:hover,
 html[data-theme="dark"] .discovery-tab.is-active,
 html[data-theme="dark"] .contact-mode-btn:hover,
 html[data-theme="dark"] .contact-mode-btn.is-active{background:var(--accent-fill);border-color:var(--accent-fill);color:#FFF}
-html[data-theme="dark"] .discovery-tab.is-active span{color:#FFE0D5}
+html[data-theme="dark"] .discovery-tab.is-active span{color:rgba(255,255,255,.92)}
 
 html[data-theme="dark"] .review-card{background:var(--surface-elevated);border-color:var(--line);border-left-color:var(--accent-text)}
 html[data-theme="dark"] .status-badge--pending,
