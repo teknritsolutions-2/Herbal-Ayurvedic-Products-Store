@@ -15,8 +15,12 @@
   <div data-site-header></div>
   <main id="main">
 
-    <!-- 1. Editorial Hero (Distinct Magazine Journal Structure) -->
-    <section class="editorial-hero">
+    <!-- 1. Editorial Hero (Conventional Hero Banner with Background Image) -->
+    <section class="editorial-hero editorial-hero--banner">
+      <div class="editorial-hero__bg" aria-hidden="true">
+        <img src="../assets/images/floral-tea.jpg" alt="" class="editorial-hero__bg-img">
+        <div class="editorial-hero__overlay"></div>
+      </div>
       <div class="container editorial-hero__container">
         <div class="editorial-hero__masthead" data-reveal>
           <span class="masthead-issue">Vol. 02 · Issue IV</span>
@@ -24,35 +28,20 @@
           <span class="masthead-meta">8-Minute Read</span>
         </div>
 
-        <div class="editorial-hero__grid">
-          <div class="editorial-hero__monograph editorial-hero__copy" data-reveal>
-            <p class="eyebrow">Field Notes · Botanical Essays</p>
-            <h1>A slower shelf for everyday care.</h1>
-            <p class="lead">Follow an editorial journey through warming herbal oils, restorative hair tonics, mindful tea steeps, and the ancient plants that bring daily rituals into quiet focus.</p>
-            <blockquote class="editorial-hero__quote">
-              “Ayurveda begins with attention. Notice the leaf, the warmth of water, and the quiet return to what nourishes you.”
-            </blockquote>
-            <div class="editorial-hero__actions">
-              <a class="button" href="products.html">Browse the complete shelf</a>
-              <a class="button button--outline" href="#morning">Explore Chapters ↓</a>
-            </div>
+        <div class="editorial-hero__monograph editorial-hero__copy" data-reveal>
+          <p class="eyebrow">Field Notes · Botanical Essays</p>
+          <h1>A slower shelf for everyday care.</h1>
+          <p class="lead">Follow an editorial journey through warming herbal oils, restorative hair tonics, mindful tea steeps, and the ancient plants that bring daily rituals into quiet focus.</p>
+          <blockquote class="editorial-hero__quote">
+            “Ayurveda begins with attention. Notice the leaf, the warmth of water, and the quiet return to what nourishes you.”
+          </blockquote>
+          <div class="editorial-hero__actions">
+            <a class="button" href="products.html">Browse the complete shelf</a>
+            <a class="button button--outline" href="#morning">Explore Chapters ↓</a>
           </div>
-
-          <div class="editorial-hero__gallery" data-reveal>
-            <div class="editorial-hero__main-frame">
-              <img src="../assets/images/floral-tea.jpg" alt="Botanical tea infusion with delicate dried flowers">
-              <div class="editorial-hero__badge">
-                <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path></svg>
-                <span>Curator’s Selection</span>
-              </div>
-            </div>
-            <div class="editorial-hero__sub-frame">
-              <img src="../assets/images/tea-sunlit.jpg" alt="Sunlit morning tea ritual">
-              <div class="sub-frame-text">
-                <strong>Chapter 01 Preview</strong>
-                <small>Single-estate organic harvests</small>
-              </div>
-            </div>
+          <div class="editorial-hero__tag">
+            <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path></svg>
+            <span>Curator’s Selection · Chapter 01 Preview · Single-Estate Organic Harvests</span>
           </div>
         </div>
       </div>
