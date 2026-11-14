@@ -32,6 +32,11 @@ html[dir="rtl"] .review-card{border-left:1px solid var(--line);border-right:4px 
 
 html[dir="rtl"] .discovery-tab{text-align:right}
 
+html[dir="rtl"] .editorial-hero__quote{border-left:none;border-right:3px solid var(--accent-fill);border-radius:14px 0 0 14px}
+html[dir="rtl"] .editorial-hero__badge{right:auto;left:14px}
+html[dir="rtl"] .editorial-hero__sub-frame{left:auto;right:-16px}
+html[dir="rtl"] .map-overlay-badge{left:auto;right:16px}
+
 @media(max-width:980px){html[dir="rtl"] .mobile-panel{transform:translateX(-105%)}
 html[dir="rtl"] .mobile-panel.is-open{transform:none}
 html[dir="rtl"] .filter-panel{left:auto;right:0;transform:translateX(105%)}

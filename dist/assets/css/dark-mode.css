@@ -15,6 +15,8 @@ html[data-theme="dark"] {
   --focus-ring:#F0A08A;
   --rose:#E49A84;
   --blush:#EBC5B5;
+  --cream:#F7F2EC;
+  --terracotta:#F0A08A;
   --shadow:0 18px 55px rgba(0,0,0,.36);
   color-scheme:dark;
 }
@@ -47,15 +49,15 @@ html[data-theme="dark"] .ingredient-filter-strip span,
 html[data-theme="dark"] .text-link,
 html[data-theme="dark"] .text-button{color:var(--accent-text)}
 
-html[data-theme="dark"] .hero__copy h1 span{color:var(--accent-text)}
+html[data-theme="dark"] .hero__copy h1 span{color:inherit}
 html[data-theme="dark"] .hero-scene__card{background:rgba(43,43,47,.94);border-color:var(--line)}
 html[data-theme="dark"] .hero-scene__leaf{border-color:var(--canvas)}
 html[data-theme="dark"] .micro-proof li{background:var(--surface);color:var(--muted)}
 
 html[data-theme="dark"] .button--outline{background:transparent;border-color:var(--accent-text);color:var(--accent-text)}
 html[data-theme="dark"] .button--outline:hover{background:var(--accent-fill);border-color:var(--accent-fill);color:var(--on-accent)}
-html[data-theme="dark"] .button--light{background:#F7F2EC;border-color:#F7F2EC;color:#572418}
-html[data-theme="dark"] .button--light:hover{background:#DED5CE;border-color:#DED5CE;color:#3D1911}
+html[data-theme="dark"] .button--light{background:var(--sand);border-color:var(--line);color:var(--ink)}
+html[data-theme="dark"] .button--light:hover{background:var(--surface-elevated);border-color:var(--accent-text);color:var(--accent-text)}
 html[data-theme="dark"] .button:disabled,
 html[data-theme="dark"] .button[aria-disabled="true"]{background:var(--sand);border-color:var(--line);color:#AAA2A0}
 
@@ -72,7 +74,7 @@ html[data-theme="dark"] .status-panel,
 html[data-theme="dark"] .order-summary,
 html[data-theme="dark"] .consult-form{background:var(--surface);border-color:var(--line)}
 html[data-theme="dark"] .product-card__image{background:var(--surface-elevated)}
-html[data-theme="dark"] .badge{color:#3B1B14;background:#FFF4ED}
+html[data-theme="dark"] .badge{color:var(--accent-text);background:var(--surface-elevated);border:1px solid var(--line)}
 html[data-theme="dark"] .badge--hair{color:#FFF;background:var(--accent-fill)}
 html[data-theme="dark"] .quick-add{background:transparent;border-color:var(--accent-text);color:var(--accent-text)}
 html[data-theme="dark"] .quick-add:hover{background:var(--accent-fill);border-color:var(--accent-fill);color:#FFF}
@@ -85,7 +87,9 @@ html[data-theme="dark"] textarea::placeholder{color:#AAA2A0}
 html[data-theme="dark"] input:disabled,
 html[data-theme="dark"] select:disabled,
 html[data-theme="dark"] textarea:disabled{background:var(--sand);color:#AAA2A0}
-html[data-theme="dark"] .search-control,
+html[data-theme="dark"] .search-control{background:transparent!important;background-color:transparent!important;border-color:var(--line);border-radius:16px}
+html[data-theme="dark"] .search-control input{background:transparent!important;background-color:transparent!important;border-radius:inherit;color:var(--ink)}
+html[data-theme="dark"] .search-control:focus-within{border-color:var(--accent-text);box-shadow:0 0 0 3px color-mix(in srgb,var(--accent-text) 25%,transparent)}
 html[data-theme="dark"] .ingredient-filter-strip{background:var(--surface);border-color:var(--line)}
 
 html[data-theme="dark"] .nav-dropdown-menu{background:var(--surface-elevated);border-color:var(--line)}
@@ -124,7 +128,7 @@ html[data-theme="dark"] .registry-toolbar .status-badge{background:var(--sand);b
 html[data-theme="dark"] .editorial-index a:hover,
 html[data-theme="dark"] .editorial-index a:focus-visible{background:var(--sand);color:var(--accent-text)}
 html[data-theme="dark"] .contact-card .button--outline{border-color:rgba(255,255,255,.72);color:#FFF}
-html[data-theme="dark"] .contact-card .button--outline:hover{background:#FFF;border-color:#FFF;color:#572418}
+html[data-theme="dark"] .contact-card .button--outline:hover{background:var(--surface);border-color:var(--surface);color:var(--accent-text)}
 
 html[data-theme="dark"] .consult-preview,
 html[data-theme="dark"] .consult-banner,
@@ -162,3 +166,22 @@ html[data-theme="dark"] .footer a:hover{color:#FFF}
 html[data-theme="dark"] .newsletter input{background:#222326;border-color:#454146;color:#F7F2EC}
 html[data-theme="dark"] .back-to-top{background:var(--surface-elevated,#252220);border-color:rgba(255,255,255,.22);color:#fff;box-shadow:0 4px 18px rgba(0,0,0,.45)}
 html[data-theme="dark"] .back-to-top:hover{background:var(--terracotta);border-color:var(--terracotta);color:#fff}
+
+html[data-theme="dark"] .editorial-hero{background:var(--surface);border-color:var(--line);color:var(--ink)}
+html[data-theme="dark"] .editorial-hero__masthead{background:var(--canvas);border-color:var(--line)}
+html[data-theme="dark"] .editorial-hero__quote{background:var(--surface-elevated);border-left-color:var(--accent-text);color:var(--ink)}
+html[data-theme="dark"] .editorial-hero__main-frame{border-color:var(--line)}
+html[data-theme="dark"] .editorial-hero__sub-frame{background:var(--surface-elevated);border-color:var(--line);box-shadow:0 14px 38px rgba(0,0,0,.45)}
+html[data-theme="dark"] .editorial-hero__sub-frame strong{color:var(--ink)}
+html[data-theme="dark"] .editorial-hero__sub-frame small{color:var(--muted)}
+
+html[data-theme="dark"] .location-info-card{background:var(--surface);border-color:var(--line)}
+html[data-theme="dark"] .location-details-list{border-color:var(--line)}
+html[data-theme="dark"] .location-map-frame{border-color:var(--line)}
+html[data-theme="dark"] .location-map-frame iframe{filter:invert(90%) hue-rotate(180deg) contrast(90%)}
+html[data-theme="dark"] .map-overlay-badge{background:rgba(34,35,38,.94);border-color:var(--line);color:var(--ink)}
+html[data-theme="dark"] .map-overlay-badge strong{color:var(--ink)}
+html[data-theme="dark"] .map-overlay-badge small{color:var(--muted)}
+
+html[data-theme="dark"] .social-link{background:var(--surface-elevated);border-color:var(--line);color:var(--muted)!important}
+html[data-theme="dark"] .social-link:hover{background:var(--accent-fill);border-color:var(--accent-fill);color:#fff!important}
