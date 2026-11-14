@@ -17,6 +17,9 @@ html[data-theme="dark"] {
   --blush:#EBC5B5;
   --cream:#F7F2EC;
   --terracotta:#F0A08A;
+  --brick:#A64B35;
+  --clay:#F0A08A;
+  --clay-deep:#7E3525;
   --shadow:0 18px 55px rgba(0,0,0,.36);
   color-scheme:dark;
 }
@@ -90,6 +93,7 @@ html[data-theme="dark"] textarea:disabled{background:var(--sand);color:#AAA2A0}
 html[data-theme="dark"] .search-control{background:transparent!important;background-color:transparent!important;border-color:var(--line);border-radius:16px}
 html[data-theme="dark"] .search-control input{background:transparent!important;background-color:transparent!important;border-radius:inherit;color:var(--ink)}
 html[data-theme="dark"] .search-control:focus-within{border-color:var(--accent-text);box-shadow:0 0 0 3px color-mix(in srgb,var(--accent-text) 25%,transparent)}
+html[data-theme="dark"] .shop-toolbar select{border-radius:16px}
 html[data-theme="dark"] .ingredient-filter-strip{background:var(--surface);border-color:var(--line)}
 
 html[data-theme="dark"] .nav-dropdown-menu{background:var(--surface-elevated);border-color:var(--line)}
